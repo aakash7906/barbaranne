@@ -35,17 +35,17 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const bannerSlides = [
     {
-      image: '/pool-banner.jpg',
+      image: '/card1.png',
       subtitle: 'Embrace',
       title: 'Your Passion',
     },
     {
-      image: '/pool-clean.jpg',
+      image: '/card2.png',
       subtitle: 'Follow',
       title: 'Your Path',
     },
     {
-      image: '/villa.jpg',
+      image: '/card3.png',
       subtitle: 'Build',
       title: 'Your Future',
     },
@@ -141,7 +141,7 @@ export default function HomePage() {
           <div className="flex h-[560px] items-center justify-center bg-[#B87E58] sm:h-[680px] md:h-[800px]">
             <div className="w-[220px] sm:w-[270px] md:w-[310px] aspect-[3/4] overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.02] flex items-center justify-center">
               <img
-                src="/villa.jpg"
+                src="/villa.png"
                 alt="Luxury Property"
                 className="block h-full w-full object-cover"
               />
@@ -179,34 +179,7 @@ export default function HomePage() {
           >
             I am a licensed REALTOR® with Berkshire Hathaway HomeServices Florida Properties Group (BHHS). After relocating from Ohio to Clearwater Beach in April 2016, I can confidently say it was one of the best decisions of my life. I'm passionate about helping others make that same seamless transition to Florida and find their own piece of paradise.
           </p>
-          {/* <p
-            className="mx-auto mt-8 text-center"
-            style={{
-              fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-              fontSize: '15px',
-              lineHeight: '2.25',
-              color: '#3F524A',
-              fontWeight: 400,
-              maxWidth: '700px',
-              letterSpacing: '0.01em',
-            }}
-          >
-            I am dedicated to delivering exceptional real estate services with integrity, professionalism, and a personalized touch. With a strong understanding of the local market and a commitment to my clients' success, I guide buyers, sellers, and investors through every step of the process with confidence. My attention to detail, skilled negotiation, and genuine passion for helping clients achieve their goals set me apart in today's competitive market.
-          </p> */}
-          {/* <p
-            className="mx-auto mt-6 mb-9 text-center"
-            style={{
-              fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-              fontSize: '15px',
-              lineHeight: '2.25',
-              color: '#3F524A',
-              fontWeight: 400,
-              maxWidth: '700px',
-              letterSpacing: '0.01em',
-            }}
-          >
-            To me, real estate is about more than transactions—it's about building lasting relationships. I take pride in guiding my clients through one of life's most important decisions with care, honesty, and dedication. Whether you're buying your first home, selling, or investing, I will work tirelessly to ensure a smooth and successful experience from start to finish.
-          </p> */}
+
           <div className="flex justify-center items-center w-full" style={{ marginTop: '56px' }}>
             <button
               onClick={() => navigate('/about')}
@@ -319,7 +292,7 @@ export default function HomePage() {
                 <StairIcon />
               </div>
               <h3
-                className="mb-2 text-[15.5px] font-normal tracking-[-0.01em] text-[#233B33] text-center"
+                className="mb-2 text-[18px] font-normal tracking-[-0.01em] text-[#233B33] text-center"
                 style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
               >
                 Investment Planning
@@ -328,10 +301,10 @@ export default function HomePage() {
                 className="mx-auto text-center"
                 style={{
                   fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-                  fontSize: '12.5px',
+                  fontSize: '13px',
                   lineHeight: '1.85',
                   color: '#3F524A',
-                  fontWeight: 300,
+                  fontWeight: 375,
                   maxWidth: '240px',
                 }}
               >
@@ -346,7 +319,7 @@ export default function HomePage() {
                 <HouseRoofIcon />
               </div>
               <h3
-                className="mb-2 text-[15.5px] font-normal tracking-[-0.01em] text-[#233B33] text-center"
+                className="mb-2 text-[18px] font-normal tracking-[-0.01em] text-[#233B33] text-center"
                 style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
               >
                 Real Estate Guidance
@@ -355,10 +328,10 @@ export default function HomePage() {
                 className="mx-auto text-center"
                 style={{
                   fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-                  fontSize: '12.5px',
+                  fontSize: '13px',
                   lineHeight: '1.85',
                   color: '#3F524A',
-                  fontWeight: 300,
+                  fontWeight: 375,
                   maxWidth: '240px',
                 }}
               >
@@ -373,7 +346,7 @@ export default function HomePage() {
                 <ValuationDiagonalIcon />
               </div>
               <h3
-                className="mb-2 text-[15.5px] font-normal tracking-[-0.01em] text-[#233B33] text-center"
+                className="mb-2 text-[18px] font-normal tracking-[-0.01em] text-[#233B33] text-center"
                 style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
               >
                 Property Tax Valuation
@@ -382,10 +355,10 @@ export default function HomePage() {
                 className="mx-auto text-center"
                 style={{
                   fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-                  fontSize: '12.5px',
+                  fontSize: '13px',
                   lineHeight: '1.85',
                   color: '#3F524A',
-                  fontWeight: 300,
+                  fontWeight: 375,
                   maxWidth: '240px',
                 }}
               >
@@ -462,14 +435,14 @@ export default function HomePage() {
               className="text-[13px] font-light text-[#3F524A] text-left"
               style={{
                 fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-                marginBottom: '50px',
+                marginBottom: '26px',
               }}
             >
               I'm a tagline. Click here to add your own text and edit me.
             </p>
             <div
               className="flex flex-col items-start text-left"
-              style={{ marginBottom: '36px' }}
+              style={{ marginBottom: '24px' }}
             >
               <span
                 className="text-[13px] font-light text-[#3F524A] leading-normal"
@@ -522,7 +495,7 @@ export default function HomePage() {
               (prev) => (prev - 1 + testimonials.length) % testimonials.length
             )
           }
-          className="absolute left-6 sm:left-14 top-[58%] -translate-y-1/2 p-2 text-white/70 transition-colors hover:text-white cursor-pointer"
+          className="absolute left-6 sm:left-14 top-[64%] -translate-y-1/2 p-2 text-white/70 transition-colors hover:text-white cursor-pointer"
           aria-label="Previous Testimonial"
         >
           <ArrowLeft className="h-7 w-7 stroke-[1]" />
@@ -531,7 +504,7 @@ export default function HomePage() {
           onClick={() =>
             setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
           }
-          className="absolute right-6 sm:right-14 top-[58%] -translate-y-1/2 p-2 text-white/70 transition-colors hover:text-white cursor-pointer"
+          className="absolute right-6 sm:right-14 top-[64%] -translate-y-1/2 p-2 text-white/70 transition-colors hover:text-white cursor-pointer"
           aria-label="Next Testimonial"
         >
           <ArrowRight className="h-7 w-7 stroke-[1]" />
@@ -539,7 +512,7 @@ export default function HomePage() {
 
         <div className="mx-auto max-w-[620px] w-full flex flex-col items-center justify-center text-center">
           <p
-            className="text-[15px] text-[#B87E58] text-center"
+            className="text-[22px] text-[#B87E58] text-center"
             style={{
               fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
               letterSpacing: '0.04em',
@@ -549,46 +522,54 @@ export default function HomePage() {
           >
             Testimonials
           </p>
-          <h4
-            className="text-[17px] sm:text-[18px] font-normal text-white text-center"
-            style={{
-              fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-              letterSpacing: '0.05em',
-              marginBottom: '28px',
-            }}
-          >
-            {testimonials[currentTestimonial].author}
-          </h4>
-          <p
-            className="text-[14px] sm:text-[15px] font-light leading-[2.1] text-white/85 text-center"
-            style={{
-              fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-            }}
-          >
-            {testimonials[currentTestimonial].quote}
-          </p>
+          <div style={{ transform: 'translateY(-45px)' }}>
+            <h4
+              className="text-[17px] sm:text-[18px] font-normal text-white text-center"
+              style={{
+                fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+                letterSpacing: '0.05em',
+                marginBottom: '28px',
+              }}
+            >
+              {testimonials[currentTestimonial].author}
+            </h4>
+            <p
+              className="text-[14px] sm:text-[15px] font-light leading-[2.1] text-white/85 text-center"
+              style={{
+                fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+              }}
+            >
+              {testimonials[currentTestimonial].quote}
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* 8. Visual Feature Block — Centered */}
-      <section className="w-full bg-white flex justify-center items-center">
-        <div className="w-full max-w-[1440px] grid grid-cols-1 md:grid-cols-2 items-center justify-center">
-          {/* Left: Terracotta panel */}
-          <div className="flex h-[400px] items-center justify-center bg-[#B87E58] sm:h-[480px] md:h-[520px]">
-            <div className="w-[150px] sm:w-[185px] md:w-[210px] aspect-[2/3] overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.02] flex items-center justify-center">
+      {/* 8. Visual Feature Block — Centered Proportional Layout */}
+      <section
+        className="w-full bg-white flex justify-center items-center px-6 sm:px-10 lg:px-16"
+        style={{
+          paddingTop: '90px',
+          paddingBottom: '30px',
+        }}
+      >
+        <div className="w-full max-w-[1180px] flex flex-col md:flex-row items-center justify-center gap-10 sm:gap-12 md:gap-14 lg:gap-16">
+          {/* Left: Terracotta vertical panel with centered palm photo */}
+          <div className="w-full max-w-[400px] sm:max-w-[440px] md:w-[440px] h-[600px] sm:h-[660px] md:h-[690px] bg-[#B87E58] flex items-center justify-center shrink-0">
+            <div className="w-[190px] sm:w-[215px] md:w-[230px] aspect-[2/3] overflow-hidden flex items-center justify-center">
               <img
-                src="/palm.jpg"
+                src="/palm.png"
                 alt="Palm Tree Architectural View"
                 className="block h-full w-full object-cover"
-                onError={(e) => { e.target.src = '/villa.jpg'; }}
+                onError={(e) => { e.target.src = '/palm.png'; }}
               />
             </div>
           </div>
 
-          {/* Right: Client Consultation Photo */}
-          <div className="h-[400px] overflow-hidden sm:h-[480px] md:h-[520px] flex items-center justify-center">
+          {/* Right: Client Consultation Photo (landscape aspect ratio, vertically centered) */}
+          <div className="w-full max-w-[540px] sm:max-w-[590px] md:w-[580px] lg:w-[610px] h-[340px] sm:h-[380px] md:h-[410px] overflow-hidden flex items-center justify-center shrink-0">
             <img
-              src="/consultation.jpg"
+              src="/consultation.png"
               alt="Client Consultation Meeting"
               className="h-full w-full object-cover"
               onError={(e) => { e.target.src = '/berne.jpg'; }}
@@ -608,14 +589,21 @@ export default function HomePage() {
         <div className="mx-auto max-w-[570px] w-full flex flex-col items-center justify-center text-center">
           <h2
             className="text-[29px] sm:text-[31px] font-normal tracking-[-0.01em] text-[#233B33] text-center leading-tight"
-            style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
+            style={{
+              fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+              transform: 'translateY(-20px)',
+            }}
           >
             Let's Chat
           </h2>
           <p
-            className="text-[13.5px] font-light text-[#3F524A] text-center"
+            className="text-center"
             style={{
               fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+              fontSize: '14px',
+              lineHeight: '1.85',
+              color: '#3F524A',
+              fontWeight: 400,
               marginTop: '12px',
               marginBottom: '72px',
             }}
@@ -650,8 +638,14 @@ export default function HomePage() {
               <div>
                 <label
                   htmlFor="firstName"
-                  className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
-                  style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
+                  className="mb-2 block tracking-[0.04em]"
+                  style={{
+                    fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+                    fontSize: '14px',
+                    lineHeight: '1.85',
+                    color: '#3F524A',
+                    fontWeight: 400,
+                  }}
                 >
                   First Name *
                 </label>
@@ -669,8 +663,14 @@ export default function HomePage() {
               <div>
                 <label
                   htmlFor="lastName"
-                  className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
-                  style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
+                  className="mb-2 block tracking-[0.04em]"
+                  style={{
+                    fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+                    fontSize: '14px',
+                    lineHeight: '1.85',
+                    color: '#3F524A',
+                    fontWeight: 400,
+                  }}
                 >
                   Last Name *
                 </label>
@@ -690,8 +690,14 @@ export default function HomePage() {
             <div className="text-left" style={{ marginBottom: '46px' }}>
               <label
                 htmlFor="email"
-                className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
-                style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
+                className="mb-2 block tracking-[0.04em]"
+                style={{
+                  fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+                  fontSize: '14px',
+                  lineHeight: '1.85',
+                  color: '#3F524A',
+                  fontWeight: 400,
+                }}
               >
                 Email *
               </label>
@@ -711,8 +717,14 @@ export default function HomePage() {
             <div className="text-left" style={{ marginBottom: '54px' }}>
               <label
                 htmlFor="message"
-                className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
-                style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
+                className="mb-2 block tracking-[0.04em]"
+                style={{
+                  fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+                  fontSize: '14px',
+                  lineHeight: '1.85',
+                  color: '#3F524A',
+                  fontWeight: 400,
+                }}
               >
                 Message
               </label>
@@ -728,7 +740,7 @@ export default function HomePage() {
               />
             </div>
 
-            <div className="flex justify-center items-center w-full">
+            <div className="flex justify-center items-center w-full" style={{ marginTop: '24px' }}>
               <button
                 type="submit"
                 className="border border-[#B87E58] bg-transparent text-[#233B33] transition-colors duration-300 hover:bg-[#B87E58] hover:text-white cursor-pointer inline-flex items-center justify-center"

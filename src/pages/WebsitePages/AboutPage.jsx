@@ -83,9 +83,10 @@ export default function AboutPage() {
 
             {/* Subtitle / Tagline */}
             <p
-              className="text-[13px] sm:text-[13.5px] font-light text-[#3F524A]"
+              className="text-[13.5px] sm:text-[14px] text-[#233B33]"
               style={{
                 fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+                fontWeight: 450,
                 marginBottom: '26px',
               }}
             >
@@ -94,10 +95,11 @@ export default function AboutPage() {
 
             {/* Paragraph 1 */}
             <p
-              className="text-[12.5px] font-light leading-[2.0] text-[#3F524A]"
+              className="text-[13.5px] sm:text-[14px] leading-[1.95] text-[#2D3E35]"
               style={{
                 fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-                marginBottom: '20px',
+                fontWeight: 400,
+                marginBottom: '22px',
               }}
             >
               I am a licensed REALTOR® with Berkshire Hathaway HomeServices Florida Properties Group (BHHS). After relocating from Ohio to Clearwater Beach in April 2016, I can confidently say it was one of the best decisions of my life. I'm passionate about helping others make that same seamless transition to Florida and find their own piece of paradise.
@@ -105,10 +107,11 @@ export default function AboutPage() {
 
             {/* Paragraph 2 */}
             <p
-              className="text-[12.5px] font-light leading-[2.0] text-[#3F524A]"
+              className="text-[13.5px] sm:text-[14px] leading-[1.95] text-[#2D3E35]"
               style={{
                 fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
-                marginBottom: '20px',
+                fontWeight: 400,
+                marginBottom: '22px',
               }}
             >
               I am dedicated to delivering exceptional real estate services with integrity, professionalism, and a personalized touch. With a strong understanding of the local market and a commitment to my clients' success, I guide buyers, sellers, and investors through every step of the process with confidence. My attention to detail, skilled negotiation, and genuine passion for helping clients achieve their goals set me apart in today's competitive market.
@@ -116,9 +119,10 @@ export default function AboutPage() {
 
             {/* Paragraph 3 */}
             <p
-              className="text-[12.5px] font-light leading-[2.0] text-[#3F524A]"
+              className="text-[13.5px] sm:text-[14px] leading-[1.95] text-[#2D3E35]"
               style={{
                 fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+                fontWeight: 400,
                 marginBottom: '38px',
               }}
             >

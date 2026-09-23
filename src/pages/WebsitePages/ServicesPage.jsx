@@ -96,7 +96,7 @@ export default function ServicesPage() {
                   {/* Text Content */}
                   <div className="flex-1 flex flex-col items-start text-left">
                     <h2
-                      className="text-[20px] sm:text-[22px] font-normal text-[#233B33] tracking-[-0.01em]"
+                      className="text-[22px] sm:text-[24px] font-normal text-[#233B33] tracking-[-0.01em]"
                       style={{
                         fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
                         marginBottom: '10px',
