@@ -121,9 +121,9 @@ export default function BookingPage() {
   return (
     <div className="w-full bg-white flex flex-col items-center">
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+   
       {/*  SECTION 1 — Luxury Cream Editorial Banner                            */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+     
       <section
         className="w-full bg-[#FAF9F5] flex flex-col items-center justify-center relative border-b border-[#ECE7DE]"
         style={{ paddingTop: '56px', paddingBottom: '72px', minHeight: '250px' }}
@@ -183,17 +183,21 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+     
       {/*  SECTION 2 — Main Content Luxury Floating Card                       */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <section className="w-full max-w-[1240px] px-4 sm:px-6 md:px-8 mt-32 sm:mt-48 mb-48 sm:mb-64 z-10">
-        <div
-          className="bg-white w-full rounded-3xl overflow-hidden"
-          style={{
-            boxShadow: '0 24px 50px -12px rgba(35, 59, 51, 0.08), 0 4px 20px -2px rgba(35, 59, 51, 0.03)',
-            border: '1px solid #ECE7DE',
-          }}
-        >
+   
+      <section 
+        className="w-full flex justify-center bg-white z-10"
+        style={{ paddingTop: '100px', paddingBottom: '120px' }}
+      >
+        <div className="w-full max-w-[1240px] px-4 sm:px-6 md:px-8">
+          <div
+            className="bg-white w-full rounded-3xl overflow-hidden"
+            style={{
+              boxShadow: '0 24px 50px -12px rgba(35, 59, 51, 0.08), 0 4px 20px -2px rgba(35, 59, 51, 0.03)',
+              border: '1px solid #ECE7DE',
+            }}
+          >
 
           {/* ═════ STEP 1 ═════════════════════════════════════════════════════ */}
           {step === 1 && (
@@ -769,12 +773,13 @@ export default function BookingPage() {
             </div>
           )}
 
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+      
       {/*  SECTION 3 — Testimonial Trust Band                                  */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
+
       <section
         className="w-full bg-[#FAF9F5] border-t border-[#ECE7DE] flex flex-col items-center justify-center text-center"
         style={{ padding: '70px 24px' }}
