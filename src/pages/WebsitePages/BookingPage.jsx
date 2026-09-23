@@ -133,36 +133,6 @@ export default function BookingPage() {
           <div className="w-[600px] h-[220px] rounded-full bg-gradient-to-r from-[#B87E58]/10 via-[#233B33]/5 to-[#B87E58]/10 blur-3xl" />
         </div>
 
-        {/* Step indicator pills */}
-        <div className="flex items-center gap-2.5 mb-5 relative z-10" style={geo}>
-          {[
-            { num: '01', label: 'Date & Time' },
-            { num: '02', label: 'Your Details' },
-            { num: '03', label: 'Confirmation' },
-          ].map((item, i) => (
-            <React.Fragment key={item.label}>
-              {i > 0 && (
-                <div
-                  className="w-6 sm:w-10 h-[2px] transition-all duration-500 rounded-full"
-                  style={{ backgroundColor: step > i ? '#B87E58' : '#E2DDD2' }}
-                />
-              )}
-              <div
-                className="flex items-center gap-1.5 px-3 py-1.5 text-[10px] sm:text-[11px] tracking-[0.12em] uppercase font-medium transition-all duration-300 select-none shadow-sm"
-                style={{
-                  backgroundColor: step === i + 1 ? '#233B33' : step > i + 1 ? '#B87E58' : '#FFFFFF',
-                  color: step >= i + 1 ? '#FFFFFF' : '#8A9490',
-                  borderRadius: '30px',
-                  border: step === i + 1 ? '1px solid #233B33' : step > i + 1 ? '1px solid #B87E58' : '1px solid #E5E0D5',
-                }}
-              >
-                <span className="opacity-75 font-semibold text-[9.5px]">{item.num}</span>
-                <span>{item.label}</span>
-              </div>
-            </React.Fragment>
-          ))}
-        </div>
-
         <h1
           className="text-3xl sm:text-5xl md:text-[52px] font-normal tracking-tight text-[#233B33] text-center leading-tight relative z-10"
           style={geo}
@@ -178,12 +148,45 @@ export default function BookingPage() {
             {step === 3 && 'Your consultation has been successfully reserved.'}
           </span>
         </div>
+
+        {/* Step indicator pills — shifted visibly down towards banner bottom */}
+        <div
+          className="flex items-center gap-2.5 relative z-10"
+          style={{ ...geo, marginTop: '54px' }}
+        >
+          {[
+            { num: '01', label: 'Date & Time' },
+            { num: '02', label: 'Your Details' },
+            { num: '03', label: 'Confirmation' },
+          ].map((item, i) => (
+            <React.Fragment key={item.label}>
+              {i > 0 && (
+                <div
+                  className="w-6 sm:w-10 h-[2px] transition-all duration-500 rounded-full"
+                  style={{ backgroundColor: step > i ? '#B87E58' : '#E2DDD2' }}
+                />
+              )}
+              <div
+                className="flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-[12px] tracking-[0.14em] uppercase font-medium transition-all duration-300 select-none shadow-sm"
+                style={{
+                  backgroundColor: step === i + 1 ? '#233B33' : step > i + 1 ? '#B87E58' : '#FFFFFF',
+                  color: step >= i + 1 ? '#FFFFFF' : '#8A9490',
+                  borderRadius: '30px',
+                  border: step === i + 1 ? '1px solid #233B33' : step > i + 1 ? '1px solid #B87E58' : '1px solid #E5E0D5',
+                }}
+              >
+                <span className="opacity-80 font-semibold text-[10.5px] sm:text-[12px]">{item.num}</span>
+                <span>{item.label}</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/*  SECTION 2 — Main Content Luxury Floating Card                       */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <section className="w-full max-w-[1240px] px-4 sm:px-6 md:px-8 -mt-10 z-10 mb-12">
+      <section className="w-full max-w-[1240px] px-4 sm:px-6 md:px-8 mt-32 sm:mt-48 mb-48 sm:mb-64 z-10">
         <div
           className="bg-white w-full rounded-3xl overflow-hidden"
           style={{
@@ -228,7 +231,7 @@ export default function BookingPage() {
 
                 {/* ─── Left Section (7 of 12 cols): Vertically Stacked Calendar & Timeslots ─── */}
                 <div className="lg:col-span-7 flex flex-col space-y-10 lg:pr-8 xl:pr-10 lg:border-r border-[#ECE7DE]">
-                  
+
                   {/* Part 1: Calendar View */}
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -268,7 +271,7 @@ export default function BookingPage() {
 
                     {/* Day of week headers */}
                     <div className="grid grid-cols-7 text-center text-[11px] uppercase tracking-[0.1em] font-semibold text-[#8A9490] pt-2 pb-1" style={geo}>
-                      {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map((d) => (
+                      {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
                         <span key={d} className="py-1">{d}</span>
                       ))}
                     </div>
@@ -773,17 +776,17 @@ export default function BookingPage() {
       {/*  SECTION 3 — Testimonial Trust Band                                  */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       <section
-        className="w-full bg-[#233B33] flex flex-col items-center justify-center text-center"
+        className="w-full bg-[#FAF9F5] border-t border-[#ECE7DE] flex flex-col items-center justify-center text-center"
         style={{ padding: '70px 24px' }}
       >
         <div className="max-w-lg">
           <p className="text-[11px] uppercase tracking-[0.2em] text-[#B87E58] font-semibold mb-5" style={geo}>
             Trusted By Discerning Clients
           </p>
-          <h3 className="text-[22px] sm:text-[26px] font-normal text-white leading-snug" style={serif}>
+          <h3 className="text-[22px] sm:text-[26px] font-normal text-[#233B33] leading-snug" style={serif}>
             "Barbaranne's strategic insight transformed our property portfolio beyond what we thought possible."
           </h3>
-          <p className="mt-4 text-[12px] text-white/40 font-light tracking-wide" style={geo}>
+          <p className="mt-4 text-[12px] text-[#71807A] font-light tracking-wide" style={geo}>
             — David & Karen Miller, Private Investors
           </p>
           <div className="flex items-center justify-center gap-1 mt-5">
@@ -794,33 +797,6 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/*  SECTION 4 — Bottom CTA Bar                                          */}
-      {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="w-full bg-[#F7F6F0] flex flex-col items-center justify-center text-center"
-        style={{ padding: '48px 24px' }}
-      >
-        <p className="text-[12px] text-[#6C7A75] font-light mb-5 max-w-sm" style={geo}>
-          Have questions before booking? Explore our services or reach out directly.
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <button
-            onClick={() => navigate('/services')}
-            className="cursor-pointer transition-colors duration-300 hover:bg-[#B87E58] hover:text-white"
-            style={{ border: '1px solid #B87E58', backgroundColor: 'transparent', color: '#233B33', padding: '11px 26px', fontSize: '11px', fontWeight: 400, letterSpacing: '0.15em', textTransform: 'uppercase', ...geo }}
-          >
-            View Services
-          </button>
-          <button
-            onClick={() => navigate('/contact')}
-            className="cursor-pointer transition-colors duration-300 hover:bg-[#A36B46]"
-            style={{ backgroundColor: '#B87E58', color: '#fff', padding: '11px 26px', fontSize: '11px', fontWeight: 400, letterSpacing: '0.15em', textTransform: 'uppercase', border: 'none', ...geo }}
-          >
-            Contact Barbaranne
-          </button>
-        </div>
-      </section>
     </div>
   );
 }
