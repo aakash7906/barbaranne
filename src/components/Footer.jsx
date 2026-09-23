@@ -3,10 +3,10 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa6'
 
 // ─── Social Links Config (all linking to https://x.com/IrvingHill37015) ───────
 const SOCIAL_LINKS = [
-  { name: 'Facebook', href: 'https://x.com/IrvingHill37015', icon: FaFacebook },
+  { name: 'Facebook', href: 'https://www.facebook.com/BarbaranneHillIrvingRealtor', icon: FaFacebook },
   { name: 'Twitter', href: 'https://x.com/IrvingHill37015', icon: FaTwitter },
-  { name: 'LinkedIn', href: 'https://x.com/IrvingHill37015', icon: FaLinkedin },
-  { name: 'Instagram', href: 'https://x.com/IrvingHill37015', icon: FaInstagram },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/barbaranne-hill-irving-llc-9262566', icon: FaLinkedin },
+  { name: 'Instagram', href: 'https://www.instagram.com/barbarannetherealtor/', icon: FaInstagram },
 ];
 
 // ─── Footer Component ─────────────────────────────────────────────────────────

@@ -114,7 +114,7 @@ export default function HomePage() {
             className="text-4xl sm:text-5xl md:text-[62px] font-normal tracking-tight text-[#233B33] text-center leading-none"
             style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
           >
-            Barbaranne Hill-Irving
+            Barbaranne
           </h1>
           <p
             className="text-[15px] sm:text-[16.5px] tracking-[0.15em] text-[#3F524A] text-center"
@@ -179,7 +179,7 @@ export default function HomePage() {
           >
             I am a licensed REALTOR® with Berkshire Hathaway HomeServices Florida Properties Group (BHHS). After relocating from Ohio to Clearwater Beach in April 2016, I can confidently say it was one of the best decisions of my life. I'm passionate about helping others make that same seamless transition to Florida and find their own piece of paradise.
           </p>
-          <p
+          {/* <p
             className="mx-auto mt-8 text-center"
             style={{
               fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
@@ -192,8 +192,8 @@ export default function HomePage() {
             }}
           >
             I am dedicated to delivering exceptional real estate services with integrity, professionalism, and a personalized touch. With a strong understanding of the local market and a commitment to my clients' success, I guide buyers, sellers, and investors through every step of the process with confidence. My attention to detail, skilled negotiation, and genuine passion for helping clients achieve their goals set me apart in today's competitive market.
-          </p>
-          <p
+          </p> */}
+          {/* <p
             className="mx-auto mt-6 mb-9 text-center"
             style={{
               fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
@@ -206,7 +206,7 @@ export default function HomePage() {
             }}
           >
             To me, real estate is about more than transactions—it's about building lasting relationships. I take pride in guiding my clients through one of life's most important decisions with care, honesty, and dedication. Whether you're buying your first home, selling, or investing, I will work tirelessly to ensure a smooth and successful experience from start to finish.
-          </p>
+          </p> */}
           <div className="flex justify-center items-center w-full" style={{ marginTop: '56px' }}>
             <button
               onClick={() => navigate('/about')}
@@ -298,8 +298,13 @@ export default function HomePage() {
             Services
           </h2>
           <p
-            className="mt-2.5 text-[13.5px] font-light tracking-[0.05em] text-[#3F524A] text-center"
-            style={{ fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif' }}
+            className="tracking-[0.05em] text-[#3F524A] text-center"
+            style={{
+              fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
+              fontSize: '15px',
+              fontWeight: 400,
+              marginTop: '18px',
+            }}
           >
             Experience You Can Trust
           </p>
@@ -539,6 +544,7 @@ export default function HomePage() {
               fontFamily: '"Jost", "Outfit", "Century Gothic", -apple-system, sans-serif',
               letterSpacing: '0.04em',
               marginBottom: '36px',
+              transform: 'translateY(-70px)',
             }}
           >
             Testimonials
