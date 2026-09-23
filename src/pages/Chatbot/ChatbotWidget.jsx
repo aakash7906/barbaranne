@@ -9,7 +9,6 @@ import {
   ArrowRight,
   ChevronDown,
   Clock,
-  CheckCircle2,
 } from 'lucide-react';
 import {
   INITIAL_MESSAGES,
@@ -17,13 +16,14 @@ import {
   getAIResponse,
 } from './knowledgeBase';
 
+const createMessageId = (prefix) => `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+
 export default function ChatbotWidget() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [inputVal, setInputVal] = useState('');
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
   const [isTyping, setIsTyping] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -51,7 +51,7 @@ export default function ChatbotWidget() {
     if (!query || !query.trim()) return;
 
     const userMessage = {
-      id: `user-${Date.now()}`,
+      id: createMessageId('user'),
       sender: 'user',
       text: query.trim(),
       timestamp: getCurrentTime(),
@@ -59,14 +59,13 @@ export default function ChatbotWidget() {
 
     setMessages((prev) => [...prev, userMessage]);
     setInputVal('');
-    setHasInteracted(true);
     setIsTyping(true);
 
     // Simulate AI thinking and response delay (500ms - 900ms)
     setTimeout(() => {
       const botResponse = getAIResponse(query);
       const botMessage = {
-        id: `bot-${Date.now()}`,
+        id: createMessageId('bot'),
         sender: 'bot',
         text: botResponse.text,
         timestamp: getCurrentTime(),

@@ -19,7 +19,7 @@ export default function BookingPage() {
 
   // ─── Booking State ───────────────────────────────────────────────────────────
   const [selectedDay, setSelectedDay] = useState(22);
-  const [selectedMonth, setSelectedMonth] = useState('September 2026');
+  const [selectedMonth] = useState('September 2026');
   const [selectedTime, setSelectedTime] = useState('10:00 am');
   const [showMoreDetails, setShowMoreDetails] = useState(false);
   const [step, setStep] = useState(1); // 1: Schedule, 2: Client Info, 3: Confirmed
