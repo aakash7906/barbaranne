@@ -122,274 +122,466 @@ export default function BookingPage() {
     <div className="w-full bg-white flex flex-col items-center">
 
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/*  SECTION 1 — Cream Header Banner                                     */}
+      {/*  SECTION 1 — Luxury Cream Editorial Banner                            */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       <section
-        className="w-full bg-[#F7F6F0] flex flex-col items-center justify-center relative"
-        style={{ paddingTop: '56px', paddingBottom: '76px', minHeight: '240px' }}
+        className="w-full bg-[#FAF9F5] flex flex-col items-center justify-center relative border-b border-[#ECE7DE]"
+        style={{ paddingTop: '56px', paddingBottom: '72px', minHeight: '250px' }}
       >
-        {/* Step pills */}
-        <div className="flex items-center gap-2 mb-5" style={geo}>
-          {['Date & Time', 'Your Details', 'Confirmed'].map((label, i) => (
-            <React.Fragment key={label}>
-              {i > 0 && <div className="w-6 sm:w-8 h-px" style={{ backgroundColor: step > i ? '#B87E58' : '#D6D0C4' }} />}
-              <span
-                className="text-[10px] sm:text-[11px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 transition-all duration-300 select-none"
+        {/* Subtle decorative background aura */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden flex justify-center items-center opacity-40">
+          <div className="w-[600px] h-[220px] rounded-full bg-gradient-to-r from-[#B87E58]/10 via-[#233B33]/5 to-[#B87E58]/10 blur-3xl" />
+        </div>
+
+        {/* Step indicator pills */}
+        <div className="flex items-center gap-2.5 mb-5 relative z-10" style={geo}>
+          {[
+            { num: '01', label: 'Date & Time' },
+            { num: '02', label: 'Your Details' },
+            { num: '03', label: 'Confirmation' },
+          ].map((item, i) => (
+            <React.Fragment key={item.label}>
+              {i > 0 && (
+                <div
+                  className="w-6 sm:w-10 h-[2px] transition-all duration-500 rounded-full"
+                  style={{ backgroundColor: step > i ? '#B87E58' : '#E2DDD2' }}
+                />
+              )}
+              <div
+                className="flex items-center gap-1.5 px-3 py-1.5 text-[10px] sm:text-[11px] tracking-[0.12em] uppercase font-medium transition-all duration-300 select-none shadow-sm"
                 style={{
-                  backgroundColor: step === i + 1 ? '#233B33' : step > i + 1 ? '#B87E58' : 'transparent',
-                  color: step >= i + 1 ? '#fff' : '#8A9490',
-                  borderRadius: '20px',
-                  border: step < i + 1 ? '1px solid #C8C2B6' : '1px solid transparent',
+                  backgroundColor: step === i + 1 ? '#233B33' : step > i + 1 ? '#B87E58' : '#FFFFFF',
+                  color: step >= i + 1 ? '#FFFFFF' : '#8A9490',
+                  borderRadius: '30px',
+                  border: step === i + 1 ? '1px solid #233B33' : step > i + 1 ? '1px solid #B87E58' : '1px solid #E5E0D5',
                 }}
               >
-                {label}
-              </span>
+                <span className="opacity-75 font-semibold text-[9.5px]">{item.num}</span>
+                <span>{item.label}</span>
+              </div>
             </React.Fragment>
           ))}
         </div>
 
         <h1
-          className="text-3xl sm:text-5xl md:text-[54px] font-normal tracking-tight text-[#233B33] text-center leading-none"
+          className="text-3xl sm:text-5xl md:text-[52px] font-normal tracking-tight text-[#233B33] text-center leading-tight relative z-10"
           style={geo}
         >
           {step === 3 ? 'Appointment Confirmed' : 'Schedule Your Session'}
         </h1>
-        <p className="mt-3 text-[12px] sm:text-[13px] text-[#8A9490] text-center max-w-md font-light" style={geo}>
-          {step === 1 && 'Select your preferred date, time, and service below.'}
-          {step === 2 && 'Provide your contact details to finalize the booking.'}
-          {step === 3 && 'Your private consultation has been successfully reserved.'}
-        </p>
+
+        <div className="flex items-center gap-2 mt-3 text-[12px] sm:text-[13px] text-[#71807A] text-center max-w-lg font-light relative z-10" style={geo}>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#B87E58]" />
+          <span>
+            {step === 1 && 'Complimentary 1-on-1 discovery session with Barbaranne Hill-Irving.'}
+            {step === 2 && 'Provide your contact details to finalize the private booking.'}
+            {step === 3 && 'Your consultation has been successfully reserved.'}
+          </span>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      {/*  SECTION 2 — Main Content Card (overlapping the banner)              */}
+      {/*  SECTION 2 — Main Content Luxury Floating Card                       */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <section className="w-full max-w-[1100px] px-4 sm:px-6 -mt-8 z-10 mb-0">
-        <div className="bg-white w-full" style={{ boxShadow: '0 2px 30px rgba(0,0,0,0.04)' }}>
+      <section className="w-full max-w-[1240px] px-4 sm:px-6 md:px-8 -mt-10 z-10 mb-12">
+        <div
+          className="bg-white w-full rounded-3xl overflow-hidden"
+          style={{
+            boxShadow: '0 24px 50px -12px rgba(35, 59, 51, 0.08), 0 4px 20px -2px rgba(35, 59, 51, 0.03)',
+            border: '1px solid #ECE7DE',
+          }}
+        >
 
           {/* ═════ STEP 1 ═════════════════════════════════════════════════════ */}
           {step === 1 && (
-            <div style={{ padding: '40px 32px 48px' }}>
-              {/* Top label row */}
+            <div className="p-6 sm:p-10 md:p-12 lg:p-14">
+              {/* Top header row with luxury title and timezone badge */}
               <div
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-8"
-                style={{ borderBottom: '1px solid #E8E4DC' }}
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-7 mb-10"
+                style={{ borderBottom: '1px solid #ECE7DE' }}
               >
-                <div className="flex items-center gap-2">
-                  <CalendarDays className="w-4 h-4 text-[#B87E58]" />
-                  <h2 className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#233B33]" style={geo}>
-                    Select a Date and Time
-                  </h2>
+                <div className="flex items-center gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-[#FAF7F2] border border-[#E8DFD3] flex items-center justify-center text-[#B87E58] shadow-sm">
+                    <CalendarDays className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h2 className="text-[14.5px] font-semibold uppercase tracking-[0.16em] text-[#233B33]" style={geo}>
+                      Select a Date & Time
+                    </h2>
+                    <p className="text-[12px] text-[#8A9490] m-0 mt-0.5" style={geo}>
+                      Real-time live availability for private client consultations
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px] text-[#8A9490]" style={geo}>
-                  <Clock className="w-3.5 h-3.5 text-[#B87E58]" />
-                  <span>Pacific Daylight Time (PDT)</span>
+
+                <div
+                  className="flex items-center gap-2.5 text-[12px] text-[#63726C] px-4 py-2 rounded-full bg-[#FAF9F5] border border-[#E8E4DC] self-start sm:self-auto shadow-xs"
+                  style={geo}
+                >
+                  <Clock className="w-4 h-4 text-[#B87E58]" />
+                  <span>Eastern / Pacific Time Auto-Sync (PDT)</span>
                 </div>
               </div>
 
-              {/* Three-column grid — stretch all columns to same height */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+              {/* 2-Column Luxury Spacious Split: Left Stack (Calendar + Time Slots) & Right (Concierge & Appointment Summary) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14">
 
-                {/* ─── Column 1: Calendar ─────────────────────────────── */}
-                <div className="lg:pr-8 lg:border-r pb-8 lg:pb-0" style={{ borderColor: '#E8E4DC' }}>
-                  {/* Month nav */}
-                  <div className="flex items-center justify-between mb-4">
-                    <button onClick={prevMonth} className="p-1 text-[#233B33] hover:text-[#B87E58] transition-colors cursor-pointer"><ChevronLeft className="w-4 h-4" /></button>
-                    <span className="text-[13px] font-medium text-[#233B33] tracking-wide select-none" style={geo}>{MONTHS[month]} {year}</span>
-                    <button onClick={nextMonth} className="p-1 text-[#233B33] hover:text-[#B87E58] transition-colors cursor-pointer"><ChevronRight className="w-4 h-4" /></button>
-                  </div>
-
-                  {/* Day headers */}
-                  <div className="grid grid-cols-7 text-center text-[10px] uppercase tracking-[0.08em] font-semibold text-[#8A9490] mb-1.5" style={geo}>
-                    {['Su','Mo','Tu','We','Th','Fr','Sa'].map(d => <span key={d}>{d}</span>)}
-                  </div>
-
-                  {/* Days grid */}
-                  <div className="space-y-0.5">
-                    {weeks.map((wk, wi) => (
-                      <div key={wi} className="grid grid-cols-7 text-center">
-                        {wk.map((d, di) => {
-                          if (!d) return <div key={di} className="h-[38px]" />;
-                          const sel = day === d;
-                          const ok = isAvail(d);
-                          return (
-                            <button
-                              key={di}
-                              disabled={!ok}
-                              onClick={() => setDay(d)}
-                              className="h-[38px] mx-auto w-[38px] flex items-center justify-center transition-all duration-200 cursor-pointer"
-                              style={{
-                                borderRadius: '8px',
-                                backgroundColor: sel ? '#B87E58' : 'transparent',
-                                color: sel ? '#fff' : ok ? '#233B33' : '#C8CBC9',
-                                fontWeight: sel ? 600 : 400,
-                                fontSize: '12px',
-                                boxShadow: sel ? '0 3px 12px rgba(184,126,88,0.28)' : 'none',
-                                ...geo,
-                              }}
-                              onMouseEnter={e => { if (!sel && ok) e.currentTarget.style.backgroundColor = '#F5F4F0'; }}
-                              onMouseLeave={e => { if (!sel) e.currentTarget.style.backgroundColor = 'transparent'; }}
-                            >
-                              {d}
-                            </button>
-                          );
-                        })}
+                {/* ─── Left Section (7 of 12 cols): Vertically Stacked Calendar & Timeslots ─── */}
+                <div className="lg:col-span-7 flex flex-col space-y-10 lg:pr-8 xl:pr-10 lg:border-r border-[#ECE7DE]">
+                  
+                  {/* Part 1: Calendar View */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-[10.5px] uppercase tracking-[0.16em] text-[#B87E58] font-bold block" style={geo}>
+                          Step 1 • Pick a Date
+                        </span>
+                        <h3 className="text-[16px] font-medium text-[#233B33] mt-1" style={geo}>
+                          Select Day from Calendar
+                        </h3>
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Legend */}
-                  <div className="flex items-center justify-between mt-4 pt-3 text-[10px] text-[#8A9490]" style={{ borderTop: '1px solid #E8E4DC', ...geo }}>
-                    <span className="flex items-center gap-1.5">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#B87E58' }} /> Available
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#C8CBC9' }} /> Weekend
-                    </span>
-                  </div>
-                </div>
-
-                {/* ─── Column 2: Time Slots ───────────────────────────── */}
-                <div className="lg:px-8 lg:border-r pb-8 lg:pb-0" style={{ borderColor: '#E8E4DC' }}>
-                  <p className="text-[10px] uppercase tracking-[0.12em] text-[#8A9490] font-semibold mb-0.5" style={geo}>
-                    Available Times
-                  </p>
-                  <p className="text-[14px] font-medium text-[#233B33] mb-5" style={geo}>
-                    {dayName(day)}, {MONTHS[month]} {day}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-2">
-                    {slots.map(s => {
-                      const on = time === s;
-                      return (
-                        <button
-                          key={s}
-                          onClick={() => setTime(s)}
-                          className="flex items-center justify-center gap-1.5 cursor-pointer transition-all duration-200"
-                          style={{
-                            padding: '10px 4px',
-                            borderRadius: '8px',
-                            fontSize: '12px',
-                            fontWeight: on ? 600 : 400,
-                            backgroundColor: on ? '#B87E58' : '#FAF9F5',
-                            color: on ? '#fff' : '#233B33',
-                            border: on ? '1px solid #B87E58' : '1px solid #E0DCD4',
-                            boxShadow: on ? '0 3px 12px rgba(184,126,88,0.22)' : 'none',
-                            ...geo,
-                          }}
-                          onMouseEnter={e => { if (!on) { e.currentTarget.style.borderColor = '#B87E58'; e.currentTarget.style.color = '#B87E58'; }}}
-                          onMouseLeave={e => { if (!on) { e.currentTarget.style.borderColor = '#E0DCD4'; e.currentTarget.style.color = '#233B33'; }}}
-                        >
-                          <Clock className="w-3.5 h-3.5" style={{ color: on ? '#fff' : '#B87E58' }} />
-                          <span>{s}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  <button
-                    onClick={() => setAllSlots(!allSlots)}
-                    className="mt-3.5 w-full text-center text-[11px] font-medium text-[#B87E58] hover:text-[#A36B46] cursor-pointer transition-colors"
-                    style={geo}
-                  >
-                    {allSlots ? 'Show fewer' : `Show all sessions (+${ALL_SLOTS.length - 8} more)`}
-                  </button>
-
-                  {/* Helpful note */}
-                  <div
-                    className="mt-5 flex items-start gap-2.5 text-[11px] text-[#8A9490] leading-relaxed"
-                    style={{ padding: '12px', borderRadius: '8px', backgroundColor: '#FAF9F5', border: '1px solid #E8E4DC', ...geo }}
-                  >
-                    <Star className="w-4 h-4 text-[#B87E58] shrink-0 mt-0.5" />
-                    <span>
-                      <strong className="text-[#233B33]">Need a different time?</strong> Mention it in the next step.
-                    </span>
-                  </div>
-                </div>
-
-                {/* ─── Column 3: Service Summary ──────────────────────── */}
-                <div className="lg:pl-8 flex flex-col">
-                  <p className="text-[10px] uppercase tracking-[0.12em] text-[#8A9490] font-semibold mb-2.5" style={geo}>
-                    Your Appointment
-                  </p>
-
-                  {/* Service dropdown */}
-                  <select
-                    value={service.id}
-                    onChange={e => { const s = SERVICE_OPTIONS.find(o => o.id === e.target.value); if (s) setService(s); }}
-                    className="w-full text-[12px] font-medium text-[#233B33] px-3 py-2.5 cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#B87E58]"
-                    style={{ borderRadius: '8px', border: '1px solid #E0DCD4', backgroundColor: '#FAF9F5', ...geo }}
-                  >
-                    {SERVICE_OPTIONS.map(o => <option key={o.id} value={o.id}>{o.title} ({o.duration})</option>)}
-                  </select>
-
-                  {/* Detail card */}
-                  <div className="mt-3" style={{ padding: '16px', borderRadius: '8px', backgroundColor: '#FAF9F5', border: '1px solid #E8E4DC' }}>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <h4 className="text-[13px] font-medium text-[#233B33]" style={geo}>{service.title}</h4>
-                      <span className="text-[11px] font-semibold text-[#B87E58]" style={geo}>{service.duration}</span>
+                      <div className="text-[12px] text-[#71807A] bg-[#FAF9F5] px-3 py-1.5 rounded-lg border border-[#ECE7DE]" style={geo}>
+                        Selected: <strong className="text-[#233B33] font-semibold">{dayName(day)}, {MONTHS[month].slice(0, 3)} {day}</strong>
+                      </div>
                     </div>
-                    <p className="text-[11px] text-[#6C7A75] font-light leading-relaxed mb-2.5" style={geo}>
-                      {service.description}
-                    </p>
 
-                    <button
-                      onClick={() => setDetails(!details)}
-                      className="flex items-center gap-1 text-[11px] text-[#B87E58] font-medium cursor-pointer hover:underline"
-                      style={geo}
+                    {/* Month header & navigation */}
+                    <div className="flex items-center justify-between bg-[#FAF9F5] px-5 py-3 rounded-2xl border border-[#ECE7DE] my-2">
+                      <button
+                        onClick={prevMonth}
+                        className="p-2 rounded-xl text-[#233B33] hover:text-[#B87E58] hover:bg-white transition-all cursor-pointer shadow-none hover:shadow-xs"
+                        aria-label="Previous month"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <span className="text-[15px] font-semibold text-[#233B33] tracking-wide select-none" style={geo}>
+                        {MONTHS[month]} {year}
+                      </span>
+                      <button
+                        onClick={nextMonth}
+                        className="p-2 rounded-xl text-[#233B33] hover:text-[#B87E58] hover:bg-white transition-all cursor-pointer shadow-none hover:shadow-xs"
+                        aria-label="Next month"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Day of week headers */}
+                    <div className="grid grid-cols-7 text-center text-[11px] uppercase tracking-[0.1em] font-semibold text-[#8A9490] pt-2 pb-1" style={geo}>
+                      {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map((d) => (
+                        <span key={d} className="py-1">{d}</span>
+                      ))}
+                    </div>
+
+                    {/* Days grid with luxury spacious cells and generous gaps */}
+                    <div className="space-y-2">
+                      {weeks.map((wk, wi) => (
+                        <div key={wi} className="grid grid-cols-7 text-center gap-2 sm:gap-2.5">
+                          {wk.map((d, di) => {
+                            if (!d) return <div key={di} className="h-[44px]" />;
+                            const sel = day === d;
+                            const ok = isAvail(d);
+                            return (
+                              <button
+                                key={di}
+                                disabled={!ok}
+                                onClick={() => setDay(d)}
+                                className="h-[44px] w-full max-w-[46px] mx-auto flex items-center justify-center transition-all duration-200 cursor-pointer relative"
+                                style={{
+                                  borderRadius: '12px',
+                                  background: sel
+                                    ? 'linear-gradient(135deg, #B87E58 0%, #9E643E 100%)'
+                                    : 'transparent',
+                                  color: sel ? '#FFFFFF' : ok ? '#233B33' : '#D0D4D2',
+                                  fontWeight: sel ? 600 : ok ? 500 : 300,
+                                  fontSize: '13.5px',
+                                  boxShadow: sel
+                                    ? '0 6px 18px rgba(184, 126, 88, 0.35)'
+                                    : 'none',
+                                  border: sel
+                                    ? '1px solid #B87E58'
+                                    : '1px solid transparent',
+                                  ...geo,
+                                }}
+                                onMouseEnter={(e) => {
+                                  if (!sel && ok) {
+                                    e.currentTarget.style.backgroundColor = '#F6F3ED';
+                                    e.currentTarget.style.color = '#B87E58';
+                                  }
+                                }}
+                                onMouseLeave={(e) => {
+                                  if (!sel) {
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                    e.currentTarget.style.color = ok ? '#233B33' : '#D0D4D2';
+                                  }
+                                }}
+                              >
+                                <span>{d}</span>
+                                {/* Soft gold dot indicator for available weekday */}
+                                {ok && !sel && (
+                                  <span className="absolute bottom-1.5 w-1 h-1 rounded-full bg-[#B87E58]/50" />
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Calendar Legend */}
+                    <div
+                      className="flex items-center justify-between pt-4 text-[11.5px] text-[#7E8C86]"
+                      style={{ borderTop: '1px solid #ECE7DE', ...geo }}
                     >
-                      <span>{details ? 'Hide details' : "What's included?"}</span>
-                      {details ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                      <span className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#B87E58]" /> Available Weekdays (Bookable)
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#D0D4D2]" /> Weekend Off
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Horizontal Divider with subtle spacing */}
+                  <div className="w-full h-px bg-[#ECE7DE] my-4" />
+
+                  {/* Part 2: Vertically Stacked Timeslot Selection */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-[10.5px] uppercase tracking-[0.16em] text-[#B87E58] font-bold block" style={geo}>
+                          Step 2 • Choose Time
+                        </span>
+                        <h3 className="text-[16px] font-medium text-[#233B33] mt-1" style={geo}>
+                          Available Slots for {dayName(day)}, {MONTHS[month]} {day}
+                        </h3>
+                      </div>
+                      <span className="text-[11.5px] text-[#B87E58] font-semibold uppercase tracking-wider bg-[#B87E58]/10 px-3 py-1 rounded-full border border-[#B87E58]/20" style={geo}>
+                        {slots.length} Open Slots
+                      </span>
+                    </div>
+
+                    {/* Wide 4-column spacious slot grid with ample gaps */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                      {slots.map((s) => {
+                        const on = time === s;
+                        return (
+                          <button
+                            key={s}
+                            onClick={() => setTime(s)}
+                            className="flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 group py-3 px-2"
+                            style={{
+                              borderRadius: '12px',
+                              fontSize: '12.5px',
+                              fontWeight: on ? 600 : 500,
+                              background: on
+                                ? 'linear-gradient(135deg, #B87E58 0%, #A26842 100%)'
+                                : '#FAF9F5',
+                              color: on ? '#FFFFFF' : '#233B33',
+                              border: on ? '1px solid #B87E58' : '1px solid #E5E0D5',
+                              boxShadow: on
+                                ? '0 6px 16px rgba(184, 126, 88, 0.28)'
+                                : '0 1px 3px rgba(0,0,0,0.02)',
+                              ...geo,
+                            }}
+                            onMouseEnter={(e) => {
+                              if (!on) {
+                                e.currentTarget.style.borderColor = '#B87E58';
+                                e.currentTarget.style.color = '#B87E58';
+                                e.currentTarget.style.backgroundColor = '#FFFFFF';
+                                e.currentTarget.style.transform = 'translateY(-1px)';
+                              }
+                            }}
+                            onMouseLeave={(e) => {
+                              if (!on) {
+                                e.currentTarget.style.borderColor = '#E5E0D5';
+                                e.currentTarget.style.color = '#233B33';
+                                e.currentTarget.style.backgroundColor = '#FAF9F5';
+                                e.currentTarget.style.transform = 'translateY(0)';
+                              }
+                            }}
+                          >
+                            <Clock className="w-3.5 h-3.5" style={{ color: on ? '#FFFFFF' : '#B87E58' }} />
+                            <span>{s}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Toggle Show All Slots and Note */}
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3">
+                      <button
+                        onClick={() => setAllSlots(!allSlots)}
+                        className="py-2.5 px-4 text-center text-[12px] font-medium text-[#B87E58] hover:text-[#9E643E] bg-[#FAF9F5] hover:bg-[#F5F2EB] rounded-xl border border-[#EAE5DB] transition-all cursor-pointer w-full sm:w-auto shadow-2xs"
+                        style={geo}
+                      >
+                        {allSlots ? 'Show fewer timeslots' : `Show all available times (+${ALL_SLOTS.length - 8} more)`}
+                      </button>
+
+                      <div
+                        className="flex items-center gap-2.5 text-[11.5px] text-[#697A73] py-2 px-3.5 rounded-xl bg-[#FAF9F5] border border-[#ECE7DE]"
+                        style={geo}
+                      >
+                        <Star className="w-3.5 h-3.5 fill-[#B87E58] text-[#B87E58] shrink-0" />
+                        <span>Need a custom time? Request in next step.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ─── Right Section (5 of 12 cols): Concierge Profile & Consultation Summary ─── */}
+                <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
+                  <div className="space-y-6">
+                    {/* Concierge Intro Card */}
+                    <div
+                      className="p-5 rounded-2xl bg-[#FAF9F5] border border-[#ECE7DE] flex items-center gap-4"
+                      style={{ boxShadow: '0 2px 10px rgba(35, 59, 51, 0.03)' }}
+                    >
+                      <div className="relative shrink-0">
+                        <img
+                          src="/berne.jpg"
+                          alt="Barbaranne Hill-Irving"
+                          className="w-14 h-14 rounded-full object-cover border-2 border-[#D6A47E] shadow-sm"
+                          style={{ objectPosition: '50% 12%' }}
+                        />
+                        <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-[#34D399] border-2 border-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-[14.5px] font-semibold text-[#233B33] m-0" style={geo}>
+                          Barbaranne Hill-Irving
+                        </h4>
+                        <p className="text-[11.5px] text-[#71807A] m-0 mt-0.5 leading-snug" style={geo}>
+                          Licensed REALTOR® • Certified New Home Specialist
+                        </p>
+                        <span className="inline-flex items-center gap-1.5 text-[10.5px] text-[#B87E58] font-medium mt-1.5 bg-[#B87E58]/10 px-2 py-0.5 rounded-md">
+                          Private Discovery Call (1-on-1)
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Service Selection Section */}
+                    <div>
+                      <div className="flex items-center justify-between mb-2.5">
+                        <p className="text-[11px] uppercase tracking-[0.16em] text-[#8A9490] font-bold" style={geo}>
+                          Select Consultation Service
+                        </p>
+                        <span className="text-[10.5px] text-[#1F7A4C] font-semibold uppercase tracking-wider bg-[#E8F5EE] px-2.5 py-0.5 rounded-full" style={geo}>
+                          Complimentary
+                        </span>
+                      </div>
+
+                      {/* Luxury Custom Service Select */}
+                      <div className="relative mb-4">
+                        <select
+                          value={service.id}
+                          onChange={(e) => {
+                            const s = SERVICE_OPTIONS.find((o) => o.id === e.target.value);
+                            if (s) setService(s);
+                          }}
+                          className="w-full text-[13px] font-semibold text-[#233B33] px-4 py-3.5 cursor-pointer appearance-none bg-[#FAF9F5] hover:bg-white rounded-xl border border-[#E5E0D5] focus:outline-none focus:border-[#B87E58] focus:ring-2 focus:ring-[#B87E58]/15 transition-all shadow-xs"
+                          style={geo}
+                        >
+                          {SERVICE_OPTIONS.map((o) => (
+                            <option key={o.id} value={o.id}>
+                              {o.title} • {o.duration}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-[#8A9490] absolute right-4 top-4 pointer-events-none" />
+                      </div>
+
+                      {/* Service Description Box with clean inner padding */}
+                      <div
+                        className="p-5 rounded-2xl bg-[#FAF9F5] border border-[#ECE7DE]"
+                        style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.02)' }}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="text-[14px] font-semibold text-[#233B33]" style={geo}>
+                            {service.title}
+                          </h4>
+                          <span className="text-[11.5px] font-semibold text-[#B87E58] px-2.5 py-0.5 rounded-md bg-[#B87E58]/10" style={geo}>
+                            {service.duration}
+                          </span>
+                        </div>
+                        <p className="text-[12px] text-[#697A73] font-light leading-relaxed mb-3.5" style={geo}>
+                          {service.description}
+                        </p>
+
+                        <button
+                          onClick={() => setDetails(!details)}
+                          className="flex items-center gap-1.5 text-[11.5px] text-[#B87E58] font-medium cursor-pointer hover:text-[#9E643E] transition-colors"
+                          style={geo}
+                        >
+                          <span>{details ? 'Hide details' : "What's included in this session?"}</span>
+                          {details ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                        </button>
+
+                        {details && (
+                          <ul className="mt-3.5 pt-3.5 space-y-2 text-[11.5px] text-[#475751]" style={{ borderTop: '1px solid #E8E3DA', ...geo }}>
+                            {service.includes.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2.5">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#B87E58] shrink-0 mt-0.5" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Confirmed Slot Preview Card & Action CTA */}
+                  <div className="pt-2 space-y-4">
+                    <div
+                      className="p-4 sm:p-5 rounded-2xl flex items-center justify-between text-white"
+                      style={{
+                        background: 'linear-gradient(135deg, #233B33 0%, #1A2D27 100%)',
+                        boxShadow: '0 6px 20px rgba(35, 59, 51, 0.18)',
+                      }}
+                    >
+                      <div className="space-y-1">
+                        <span className="text-[10px] uppercase tracking-[0.16em] text-[#B87E58] font-bold block" style={geo}>
+                          Confirmed Slot Preview
+                        </span>
+                        <p className="text-[13.5px] font-medium text-white m-0" style={geo}>
+                          {dayName(day)}, {MONTHS[month]} {day}, {year}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#F3ECE4] bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/10 shadow-xs" style={geo}>
+                          <Clock className="w-3.5 h-3.5 text-[#B87E58]" />
+                          {time}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Proceed CTA Button */}
+                    <button
+                      onClick={goStep2}
+                      className="w-full flex items-center justify-center gap-2.5 cursor-pointer transition-all duration-300 group py-4 px-5 rounded-2xl text-[12.5px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg"
+                      style={{
+                        background: 'linear-gradient(135deg, #B87E58 0%, #9F643E 100%)',
+                        boxShadow: '0 8px 24px rgba(184, 126, 88, 0.35)',
+                        ...geo,
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(184, 126, 88, 0.48)';
+                        e.currentTarget.style.transform = 'translateY(-1px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(184, 126, 88, 0.35)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                    >
+                      <span>Proceed to Contact Details</span>
+                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </button>
 
-                    {details && (
-                      <ul className="mt-2.5 pt-2.5 space-y-1.5 text-[11px] text-[#4A5652]" style={{ borderTop: '1px solid #E0DCD4', ...geo }}>
-                        {service.includes.map((item, i) => (
-                          <li key={i} className="flex items-center gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#B87E58] shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    <div className="flex items-center justify-center gap-2 text-[11px] text-[#8A9490] pt-1" style={geo}>
+                      <ShieldCheck className="w-4 h-4 text-[#1F7A4C]" />
+                      <span>100% Free Consultation • No credit card required</span>
+                    </div>
                   </div>
-
-                  {/* Spacer pushes summary + CTA to bottom of column */}
-                  <div className="flex-1 min-h-4" />
-
-                  {/* Selected summary */}
-                  <div className="mt-4" style={{ padding: '14px 16px', borderRadius: '8px', backgroundColor: '#233B33' }}>
-                    <p className="text-[10px] uppercase tracking-[0.1em] text-[#B87E58] font-semibold mb-1.5" style={geo}>
-                      Selected Date & Time
-                    </p>
-                    <p className="text-[13px] font-medium text-white" style={geo}>
-                      {dayName(day)}, {MONTHS[month]} {day}, {year}
-                    </p>
-                    <p className="text-[12px] text-white/60 flex items-center gap-1.5 mt-0.5" style={geo}>
-                      <Clock className="w-3.5 h-3.5 text-[#B87E58]" />
-                      {time} (PDT)
-                    </p>
-                  </div>
-
-                  {/* CTA */}
-                  <button
-                    onClick={goStep2}
-                    className="w-full mt-4 flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:shadow-lg"
-                    style={{
-                      backgroundColor: '#B87E58', color: '#fff', padding: '13px',
-                      borderRadius: '8px', fontSize: '11px', fontWeight: 600,
-                      letterSpacing: '0.15em', textTransform: 'uppercase', border: 'none',
-                      boxShadow: '0 4px 16px rgba(184,126,88,0.22)', ...geo,
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#A36B46'; }}
-                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#B87E58'; }}
-                  >
-                    <span>Proceed to Details</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                  <p className="text-[10px] text-center text-[#8A9490] mt-1.5" style={geo}>
-                    No credit card required
-                  </p>
                 </div>
               </div>
             </div>
