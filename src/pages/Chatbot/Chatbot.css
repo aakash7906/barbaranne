@@ -60,21 +60,26 @@
 
 .luxury-chatbot-avatar-wrap {
   position: relative;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   overflow: visible;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .luxury-chatbot-avatar {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: top center;
-  border: 2px solid #B87E58;
+  object-position: 50% 12%;
+  border: 2px solid #D6A47E;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .luxury-chatbot-online-dot {
@@ -406,22 +411,38 @@
   40% { transform: scale(1); }
 }
 
-/* Quick Prompt Chips */
+/* Quick Prompt Chips (Smooth Responsive Scrollable Carousel) */
 .luxury-chatbot-chips {
   background-color: #FAF9F5;
-  padding: 8px 14px;
+  padding: 9px 12px 9px 12px;
   border-top: 1px solid rgba(35, 59, 51, 0.08);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 126, 88, 0.3) transparent;
 }
 
 .luxury-chatbot-chips::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  height: 3px;
+}
+
+.luxury-chatbot-chips::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.luxury-chatbot-chips::-webkit-scrollbar-thumb {
+  background: rgba(184, 126, 88, 0.35);
+  border-radius: 4px;
+}
+
+.luxury-chatbot-chips::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 126, 88, 0.6);
 }
 
 .luxury-chatbot-chip-btn {
@@ -430,21 +451,29 @@
   background-color: #FFFFFF;
   border: 1px solid rgba(35, 59, 51, 0.16);
   color: #233B33;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 500;
   cursor: pointer;
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
   font-family: inherit;
+  box-shadow: 0 1px 3px rgba(35, 59, 51, 0.05);
+  user-select: none;
 }
 
 .luxury-chatbot-chip-btn:hover:not(:disabled) {
-  background-color: #F6F2EC;
-  border-color: #B87E58;
-  color: #B87E58;
+  background-color: #233B33;
+  border-color: #233B33;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(35, 59, 51, 0.15);
+}
+
+.luxury-chatbot-chip-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .luxury-chatbot-chip-btn:disabled {

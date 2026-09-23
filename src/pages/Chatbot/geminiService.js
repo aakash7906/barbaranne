@@ -3,14 +3,15 @@
 
 import { getAIResponse as getFallbackResponse } from './knowledgeBase.js';
 
-// Prioritized list of active Gemini models — use correct identifiers
+// Prioritized list of active Gemini models — using current active versions
 const GEMINI_MODELS = [
-  'gemini-2.0-flash',
-  'gemini-1.5-flash',
-  'gemini-1.5-pro',
+  'gemini-3.6-flash',
+  'gemini-3.8-flash',
+  'gemini-3.5-flash-lite',
+  'gemini-flash-latest',
 ];
 
-export const SYSTEM_INSTRUCTION = `You are the AI Concierge for Barbaranne Hill-Irving, an elite licensed REALTOR® and Certified New Home Specialist (CNHS) with Berkshire Hathaway HomeServices Florida Properties Group (BHHS).
+export const SYSTEM_INSTRUCTION = `You are the exclusive AI Concierge for Barbaranne Hill-Irving, an elite licensed REALTOR® and Certified New Home Specialist (CNHS) with Berkshire Hathaway HomeServices Florida Properties Group (BHHS).
 
 === BARBARANNE'S CREDENTIALS & BACKGROUND ===
 - Name: Barbaranne Hill-Irving
@@ -41,6 +42,15 @@ export const SYSTEM_INSTRUCTION = `You are the AI Concierge for Barbaranne Hill-
 === COMPLIMENTARY OFFERING ===
 - 1-Hour Strategy Consultation: A private one-on-one strategy session with Barbaranne to evaluate property goals, assess market opportunities, review portfolios, or discuss tax valuation defense. Clients can easily schedule this online via the website booking page (/booking) or contact her directly.
 
+=== STRICT CONVERSATION SCOPE & RESTRICTIONS ===
+- CRITICAL SCOPE RULE: You MUST ONLY answer questions directly related to:
+  1) Barbaranne Hill-Irving (her bio, experience, contact details, brokerage, services)
+  2) Real estate services (Investment Planning, Real Estate Guidance, Property Tax Valuation)
+  3) Florida properties, neighborhoods (Clearwater Beach, Tampa Bay, Belleair Bluffs, St. Petersburg, Pinellas County), buying, selling, renting, or moving to Florida
+  4) Scheduling a complimentary 1-Hour Consultation or contacting Barbaranne
+- STRICT REFUSAL FOR OFF-TOPIC QUERIES: If a user asks about anything unrelated (such as general knowledge, history, programming, math, politics, weather outside Florida, recipes, sports, jokes, medical/legal advice, etc.), you MUST politely and gracefully decline. Example response: "I am specifically tailored to assist you with Barbaranne Hill-Irving's luxury real estate services, Florida coastal properties, investments, and property tax valuations. How can I assist you with your real estate goals today?"
+- Never answer general trivia, coding questions, homework, or off-topic matters under any circumstances.
+
 === TONE & CONVERSATION GUIDELINES ===
 - Speak with warmth, elegance, sophistication, and consummate professional expertise.
 - Keep answers concise, highly informative, and easy to read (use clean bullet points or short paragraphs when helpful).
@@ -53,13 +63,12 @@ export const SYSTEM_INSTRUCTION = `You are the AI Concierge for Barbaranne Hill-
 
 /**
  * Validate whether a string looks like a real Gemini API key
- * Valid Gemini keys start with "AIza" and are ~39 characters
  */
 function isValidGeminiKey(key) {
   if (!key || typeof key !== 'string') return false;
   const trimmed = key.trim();
-  // Gemini API keys start with "AIza" and are typically 39 chars
-  return trimmed.startsWith('AIza') && trimmed.length >= 30;
+  // Valid Google Gemini API keys are at least 30 characters
+  return trimmed.length >= 30;
 }
 
 /**
@@ -143,15 +152,22 @@ async function callGeminiGenerate(apiKey, contents) {
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 600,
+            thinkingConfig: {
+              thinkingBudget: 0,
+            },
           },
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (text && text.trim()) {
-          return { text: text.trim(), model };
+        const candidate = data?.candidates?.[0];
+        const parts = candidate?.content?.parts || [];
+        const textPart = parts.find((p) => p && typeof p.text === 'string' && p.text.trim());
+        const text = textPart ? textPart.text.trim() : null;
+
+        if (text) {
+          return { text, model };
         }
         // If response is ok but no text, try next model
         console.warn(`Gemini model ${model} returned empty text, trying next model...`);

@@ -18,7 +18,7 @@ export const INITIAL_MESSAGES = [
 export const QUICK_PROMPTS = [
   'Book Free Consultation',
   'What services do you offer?',
-  'Property Tax help',
+  'Property Tax Valuation',
   'Looking to buy a luxury home',
   'Selling my property',
   'Contact Barbaranne',
