@@ -16,6 +16,7 @@ import {
   Star,
   ShieldCheck,
 } from 'lucide-react';
+import { Calendar } from '../../components/ui/calendar';
 
 // ─── Service Options ─────────────────────────────────────────────────────────────
 const SERVICE_OPTIONS = [
@@ -184,28 +185,20 @@ export default function BookingPage() {
       </section>
 
      
-      {/*  SECTION 2 — Main Content Luxury Floating Card                       */}
+      {/*  SECTION 2 — Direct Editorial Layout (No Card Box)                   */}
    
       <section 
         className="w-full flex justify-center bg-white z-10"
-        style={{ paddingTop: '100px', paddingBottom: '120px' }}
+        style={{ paddingTop: '140px', paddingBottom: '160px' }}
       >
         <div className="w-full max-w-[1240px] px-4 sm:px-6 md:px-8">
-          <div
-            className="bg-white w-full rounded-3xl overflow-hidden"
-            style={{
-              boxShadow: '0 24px 50px -12px rgba(35, 59, 51, 0.08), 0 4px 20px -2px rgba(35, 59, 51, 0.03)',
-              border: '1px solid #ECE7DE',
-            }}
-          >
 
           {/* ═════ STEP 1 ═════════════════════════════════════════════════════ */}
           {step === 1 && (
-            <div className="p-6 sm:p-10 md:p-12 lg:p-14">
-              {/* Top header row with luxury title and timezone badge */}
+            <div className="w-full">
+              {/* Top header row directly on the page */}
               <div
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-7 mb-10"
-                style={{ borderBottom: '1px solid #ECE7DE' }}
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-7 mb-10 border-b border-[#ECE7DE]"
               >
                 <div className="flex items-center gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-[#FAF7F2] border border-[#E8DFD3] flex items-center justify-center text-[#B87E58] shadow-sm">
@@ -236,7 +229,7 @@ export default function BookingPage() {
                 {/* ─── Left Section (7 of 12 cols): Vertically Stacked Calendar & Timeslots ─── */}
                 <div className="lg:col-span-7 flex flex-col space-y-10 lg:pr-8 xl:pr-10 lg:border-r border-[#ECE7DE]">
 
-                  {/* Part 1: Calendar View */}
+                  {/* Part 1: Shadcn Calendar View */}
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
@@ -247,110 +240,24 @@ export default function BookingPage() {
                           Select Day from Calendar
                         </h3>
                       </div>
-                      <div className="text-[12px] text-[#71807A] bg-[#FAF9F5] px-3 py-1.5 rounded-lg border border-[#ECE7DE]" style={geo}>
+                      <div className="text-[12px] text-[#71807A] bg-[#FAF9F5] px-3.5 py-1.5 rounded-lg border border-[#ECE7DE]" style={geo}>
                         Selected: <strong className="text-[#233B33] font-semibold">{dayName(day)}, {MONTHS[month].slice(0, 3)} {day}</strong>
                       </div>
                     </div>
 
-                    {/* Month header & navigation */}
-                    <div className="flex items-center justify-between bg-[#FAF9F5] px-5 py-3 rounded-2xl border border-[#ECE7DE] my-2">
-                      <button
-                        onClick={prevMonth}
-                        className="p-2 rounded-xl text-[#233B33] hover:text-[#B87E58] hover:bg-white transition-all cursor-pointer shadow-none hover:shadow-xs"
-                        aria-label="Previous month"
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                      </button>
-                      <span className="text-[15px] font-semibold text-[#233B33] tracking-wide select-none" style={geo}>
-                        {MONTHS[month]} {year}
-                      </span>
-                      <button
-                        onClick={nextMonth}
-                        className="p-2 rounded-xl text-[#233B33] hover:text-[#B87E58] hover:bg-white transition-all cursor-pointer shadow-none hover:shadow-xs"
-                        aria-label="Next month"
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    {/* Day of week headers */}
-                    <div className="grid grid-cols-7 text-center text-[11px] uppercase tracking-[0.1em] font-semibold text-[#8A9490] pt-2 pb-1" style={geo}>
-                      {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
-                        <span key={d} className="py-1">{d}</span>
-                      ))}
-                    </div>
-
-                    {/* Days grid with luxury spacious cells and generous gaps */}
-                    <div className="space-y-2">
-                      {weeks.map((wk, wi) => (
-                        <div key={wi} className="grid grid-cols-7 text-center gap-2 sm:gap-2.5">
-                          {wk.map((d, di) => {
-                            if (!d) return <div key={di} className="h-[44px]" />;
-                            const sel = day === d;
-                            const ok = isAvail(d);
-                            return (
-                              <button
-                                key={di}
-                                disabled={!ok}
-                                onClick={() => setDay(d)}
-                                className="h-[44px] w-full max-w-[46px] mx-auto flex items-center justify-center transition-all duration-200 cursor-pointer relative"
-                                style={{
-                                  borderRadius: '12px',
-                                  background: sel
-                                    ? 'linear-gradient(135deg, #B87E58 0%, #9E643E 100%)'
-                                    : 'transparent',
-                                  color: sel ? '#FFFFFF' : ok ? '#233B33' : '#D0D4D2',
-                                  fontWeight: sel ? 600 : ok ? 500 : 300,
-                                  fontSize: '13.5px',
-                                  boxShadow: sel
-                                    ? '0 6px 18px rgba(184, 126, 88, 0.35)'
-                                    : 'none',
-                                  border: sel
-                                    ? '1px solid #B87E58'
-                                    : '1px solid transparent',
-                                  ...geo,
-                                }}
-                                onMouseEnter={(e) => {
-                                  if (!sel && ok) {
-                                    e.currentTarget.style.backgroundColor = '#F6F3ED';
-                                    e.currentTarget.style.color = '#B87E58';
-                                  }
-                                }}
-                                onMouseLeave={(e) => {
-                                  if (!sel) {
-                                    e.currentTarget.style.backgroundColor = 'transparent';
-                                    e.currentTarget.style.color = ok ? '#233B33' : '#D0D4D2';
-                                  }
-                                }}
-                              >
-                                <span>{d}</span>
-                                {/* Soft gold dot indicator for available weekday */}
-                                {ok && !sel && (
-                                  <span className="absolute bottom-1.5 w-1 h-1 rounded-full bg-[#B87E58]/50" />
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Calendar Legend */}
-                    <div
-                      className="flex items-center justify-between pt-4 text-[11.5px] text-[#7E8C86]"
-                      style={{ borderTop: '1px solid #ECE7DE', ...geo }}
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#B87E58]" /> Available Weekdays (Bookable)
-                      </span>
-                      <span className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#D0D4D2]" /> Weekend Off
-                      </span>
-                    </div>
+                    {/* Integrated Shadcn Calendar */}
+                    <Calendar
+                      selectedDate={day}
+                      onSelectDate={setDay}
+                      month={month}
+                      year={year}
+                      onPrevMonth={prevMonth}
+                      onNextMonth={nextMonth}
+                    />
                   </div>
 
                   {/* Horizontal Divider with subtle spacing */}
-                  <div className="w-full h-px bg-[#ECE7DE] my-4" />
+                  <div className="w-full h-px bg-[#ECE7DE] my-2" />
 
                   {/* Part 2: Vertically Stacked Timeslot Selection */}
                   <div className="space-y-4">
@@ -773,7 +680,6 @@ export default function BookingPage() {
             </div>
           )}
 
-          </div>
         </div>
       </section>
 
