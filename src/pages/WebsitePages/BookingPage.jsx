@@ -88,26 +88,6 @@ export default function BookingPage() {
     format: 'Video Call (Google Meet)', notes: '',
   });
 
-  // ─── Calendar ───────────────────────────────────────────────────────────────
-  const weeks = useMemo(() => {
-    const first = new Date(year, month, 1).getDay();
-    const total = new Date(year, month + 1, 0).getDate();
-    const w = []; let r = [];
-    for (let i = 0; i < first; i++) r.push(null);
-    for (let d = 1; d <= total; d++) {
-      r.push(d);
-      if (r.length === 7) { w.push(r); r = []; }
-    }
-    if (r.length) { while (r.length < 7) r.push(null); w.push(r); }
-    return w;
-  }, [year, month]);
-
-  const isAvail = (d) => {
-    if (!d) return false;
-    const dow = new Date(year, month, d).getDay();
-    return dow !== 0 && dow !== 6;
-  };
-
   const dayName = (d) => new Date(year, month, d).toLocaleDateString('en-US', { weekday: 'long' });
   const fullDate = () => new Date(year, month, day).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 
@@ -185,318 +165,289 @@ export default function BookingPage() {
       </section>
 
      
-      {/*  SECTION 2 — Direct Editorial Layout (No Card Box)                   */}
-   
+      {/*  SECTION 2 — Direct Editorial Layout (Spacious & Clean)              */}
       <section 
         className="w-full flex justify-center bg-white z-10"
-        style={{ paddingTop: '140px', paddingBottom: '160px' }}
+        style={{ paddingTop: '80px', paddingBottom: '140px' }}
       >
-        <div className="w-full max-w-[1240px] px-4 sm:px-6 md:px-8">
+        <div className="w-full max-w-[1240px] px-6 sm:px-8 md:px-12">
 
           {/* ═════ STEP 1 ═════════════════════════════════════════════════════ */}
           {step === 1 && (
             <div className="w-full">
-              {/* Top header row directly on the page */}
-              <div
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-7 mb-10 border-b border-[#ECE7DE]"
+              {/* Refined Editorial Header */}
+              <div 
+                className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#ECE7DE]"
+                style={{ paddingBottom: '16px', marginBottom: '10px' }}
               >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-[#FAF7F2] border border-[#E8DFD3] flex items-center justify-center text-[#B87E58] shadow-sm">
-                    <CalendarDays className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h2 className="text-[14.5px] font-semibold uppercase tracking-[0.16em] text-[#233B33]" style={geo}>
-                      Select a Date & Time
-                    </h2>
-                    <p className="text-[12px] text-[#8A9490] m-0 mt-0.5" style={geo}>
-                      Real-time live availability for private client consultations
-                    </p>
-                  </div>
+                <div>
+                  <span className="text-[11.5px] uppercase tracking-[0.2em] text-[#B87E58] font-semibold block mb-2" style={geo}>
+                    Availability Calendar
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-light text-[#233B33] tracking-tight m-0" style={geo}>
+                    Select a Consultation Date & Time
+                  </h2>
                 </div>
 
-                <div
-                  className="flex items-center gap-2.5 text-[12px] text-[#63726C] px-4 py-2 rounded-full bg-[#FAF9F5] border border-[#E8E4DC] self-start sm:self-auto shadow-xs"
-                  style={geo}
-                >
-                  <Clock className="w-4 h-4 text-[#B87E58]" />
+                <div className="flex items-center gap-2 text-[12px] text-[#71807A]" style={geo}>
+                  <Clock className="w-4 h-4 text-[#B87E58] shrink-0" />
                   <span>Eastern / Pacific Time Auto-Sync (PDT)</span>
                 </div>
               </div>
 
-              {/* 2-Column Luxury Spacious Split: Left Stack (Calendar + Time Slots) & Right (Concierge & Appointment Summary) */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14">
+              {/* 2-Column Luxury Split: Left (Calendar + Time Slots) & Right (Unified Sticky Editorial Sidebar) */}
+              <div 
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-start"
+                style={{ marginTop: '24px' }}
+              >
 
-                {/* ─── Left Section (7 of 12 cols): Vertically Stacked Calendar & Timeslots ─── */}
-                <div className="lg:col-span-7 flex flex-col space-y-10 lg:pr-8 xl:pr-10 lg:border-r border-[#ECE7DE]">
+                {/* ─── Left Column (7 of 12 cols): Calendar + Timeslots with Generous Breathing Room ─── */}
+                <div className="lg:col-span-7 flex flex-col">
 
-                  {/* Part 1: Shadcn Calendar View */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-[10.5px] uppercase tracking-[0.16em] text-[#B87E58] font-bold block" style={geo}>
-                          Step 1 • Pick a Date
-                        </span>
-                        <h3 className="text-[16px] font-medium text-[#233B33] mt-1" style={geo}>
-                          Select Day from Calendar
-                        </h3>
-                      </div>
-                      <div className="text-[12px] text-[#71807A] bg-[#FAF9F5] px-3.5 py-1.5 rounded-lg border border-[#ECE7DE]" style={geo}>
+                  {/* 1. Calendar View Block */}
+                  <div className="flex flex-col">
+                    <div 
+                      className="flex items-baseline justify-between"
+                      style={{ marginBottom: '24px' }}
+                    >
+                      <h3 className="text-[15px] font-medium uppercase tracking-[0.14em] text-[#233B33]" style={geo}>
+                        1. Choose Date
+                      </h3>
+                      <span className="text-[12.5px] text-[#71807A]" style={geo}>
                         Selected: <strong className="text-[#233B33] font-semibold">{dayName(day)}, {MONTHS[month].slice(0, 3)} {day}</strong>
-                      </div>
-                    </div>
-
-                    {/* Integrated Shadcn Calendar */}
-                    <Calendar
-                      selectedDate={day}
-                      onSelectDate={setDay}
-                      month={month}
-                      year={year}
-                      onPrevMonth={prevMonth}
-                      onNextMonth={nextMonth}
-                    />
-                  </div>
-
-                  {/* Horizontal Divider with subtle spacing */}
-                  <div className="w-full h-px bg-[#ECE7DE] my-2" />
-
-                  {/* Part 2: Vertically Stacked Timeslot Selection */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-[10.5px] uppercase tracking-[0.16em] text-[#B87E58] font-bold block" style={geo}>
-                          Step 2 • Choose Time
-                        </span>
-                        <h3 className="text-[16px] font-medium text-[#233B33] mt-1" style={geo}>
-                          Available Slots for {dayName(day)}, {MONTHS[month]} {day}
-                        </h3>
-                      </div>
-                      <span className="text-[11.5px] text-[#B87E58] font-semibold uppercase tracking-wider bg-[#B87E58]/10 px-3 py-1 rounded-full border border-[#B87E58]/20" style={geo}>
-                        {slots.length} Open Slots
                       </span>
                     </div>
 
-                    {/* Wide 4-column spacious slot grid with ample gaps */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                    {/* Integrated Calendar Component with ample inner padding */}
+                    <div 
+                      className="bg-[#FAF9F5] p-2 sm:p-3 rounded-2xl border border-[#ECE7DE]"
+                      style={{ marginBottom: '16px' }}
+                    >
+                      <Calendar
+                        selectedDate={day}
+                        onSelectDate={setDay}
+                        month={month}
+                        year={year}
+                        onPrevMonth={prevMonth}
+                        onNextMonth={nextMonth}
+                        className="border-none bg-transparent"
+                      />
+                    </div>
+                  </div>
+
+
+
+                  {/* 2. Timeslots Block */}
+                  <div className="flex flex-col" style={{ paddingTop: '16px' }}>
+                    <div className="flex items-start justify-between" style={{ marginBottom: '24px' }}>
+                      <div>
+                        <h3 
+                          className="text-[15px] font-medium uppercase tracking-[0.14em] text-[#233B33]" 
+                          style={{ ...geo, marginBottom: '10px' }}
+                        >
+                          2. Select Preferred Time
+                        </h3>
+                        <p 
+                          className="text-[13px] text-[#71807A] font-light m-0" 
+                          style={{ ...geo, marginTop: '8px' }}
+                        >
+                          Available slots for {dayName(day)}, {MONTHS[month]} {day}
+                        </p>
+                      </div>
+                      <span className="text-[12px] text-[#B87E58] font-medium tracking-wide bg-[#B87E58]/10 px-3 py-1 rounded-full border border-[#B87E58]/20" style={geo}>
+                        {slots.length} available
+                      </span>
+                    </div>
+
+                    {/* Timeslots Grid: Generous Vertical Gap between rows */}
+                    <div 
+                      className="grid grid-cols-2 sm:grid-cols-4"
+                      style={{ rowGap: '20px', columnGap: '16px', marginBottom: '28px' }}
+                    >
                       {slots.map((s) => {
                         const on = time === s;
                         return (
                           <button
                             key={s}
+                            type="button"
                             onClick={() => setTime(s)}
-                            className="flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 group py-3 px-2"
+                            className="flex items-center justify-center gap-2.5 cursor-pointer transition-all duration-200 py-4 px-3 rounded-xl border text-[13px]"
                             style={{
-                              borderRadius: '12px',
-                              fontSize: '12.5px',
-                              fontWeight: on ? 600 : 500,
-                              background: on
-                                ? 'linear-gradient(135deg, #B87E58 0%, #A26842 100%)'
-                                : '#FAF9F5',
+                              fontWeight: on ? 600 : 400,
+                              background: on ? '#233B33' : '#FAF9F5',
                               color: on ? '#FFFFFF' : '#233B33',
-                              border: on ? '1px solid #B87E58' : '1px solid #E5E0D5',
-                              boxShadow: on
-                                ? '0 6px 16px rgba(184, 126, 88, 0.28)'
-                                : '0 1px 3px rgba(0,0,0,0.02)',
+                              borderColor: on ? '#233B33' : '#ECE7DE',
+                              boxShadow: on ? '0 4px 14px rgba(35, 59, 51, 0.2)' : 'none',
                               ...geo,
                             }}
-                            onMouseEnter={(e) => {
-                              if (!on) {
-                                e.currentTarget.style.borderColor = '#B87E58';
-                                e.currentTarget.style.color = '#B87E58';
-                                e.currentTarget.style.backgroundColor = '#FFFFFF';
-                                e.currentTarget.style.transform = 'translateY(-1px)';
-                              }
-                            }}
-                            onMouseLeave={(e) => {
-                              if (!on) {
-                                e.currentTarget.style.borderColor = '#E5E0D5';
-                                e.currentTarget.style.color = '#233B33';
-                                e.currentTarget.style.backgroundColor = '#FAF9F5';
-                                e.currentTarget.style.transform = 'translateY(0)';
-                              }
-                            }}
                           >
-                            <Clock className="w-3.5 h-3.5" style={{ color: on ? '#FFFFFF' : '#B87E58' }} />
+                            <Clock className="w-3.5 h-3.5" style={{ color: on ? '#D6A47E' : '#8A9490' }} />
                             <span>{s}</span>
                           </button>
                         );
                       })}
                     </div>
 
-                    {/* Toggle Show All Slots and Note */}
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3">
+                    {/* Slots Action Bar with more margin */}
+                    <div 
+                      className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#ECE7DE]/60"
+                      style={{ paddingTop: '20px', marginTop: '12px' }}
+                    >
                       <button
+                        type="button"
                         onClick={() => setAllSlots(!allSlots)}
-                        className="py-2.5 px-4 text-center text-[12px] font-medium text-[#B87E58] hover:text-[#9E643E] bg-[#FAF9F5] hover:bg-[#F5F2EB] rounded-xl border border-[#EAE5DB] transition-all cursor-pointer w-full sm:w-auto shadow-2xs"
+                        className="text-[12.5px] text-[#B87E58] hover:text-[#9E643E] font-medium tracking-wide transition-colors cursor-pointer"
                         style={geo}
                       >
-                        {allSlots ? 'Show fewer timeslots' : `Show all available times (+${ALL_SLOTS.length - 8} more)`}
+                        {allSlots ? '← Show fewer timeslots' : `View all available times (+${ALL_SLOTS.length - 8} more)`}
                       </button>
 
-                      <div
-                        className="flex items-center gap-2.5 text-[11.5px] text-[#697A73] py-2 px-3.5 rounded-xl bg-[#FAF9F5] border border-[#ECE7DE]"
-                        style={geo}
-                      >
-                        <Star className="w-3.5 h-3.5 fill-[#B87E58] text-[#B87E58] shrink-0" />
+                      <div className="flex items-center gap-2 text-[12px] text-[#71807A]" style={geo}>
+                        <Star className="w-3.5 h-3.5 text-[#B87E58] fill-[#B87E58]" />
                         <span>Need a custom time? Request in next step.</span>
                       </div>
                     </div>
                   </div>
+
                 </div>
 
-                {/* ─── Right Section (5 of 12 cols): Concierge Profile & Consultation Summary ─── */}
-                <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
-                  <div className="space-y-6">
-                    {/* Concierge Intro Card */}
-                    <div
-                      className="p-5 rounded-2xl bg-[#FAF9F5] border border-[#ECE7DE] flex items-center gap-4"
-                      style={{ boxShadow: '0 2px 10px rgba(35, 59, 51, 0.03)' }}
-                    >
-                      <div className="relative shrink-0">
-                        <img
-                          src="/berne.jpg"
-                          alt="Barbaranne Hill-Irving"
-                          className="w-14 h-14 rounded-full object-cover border-2 border-[#D6A47E] shadow-sm"
-                          style={{ objectPosition: '50% 12%' }}
-                        />
-                        <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-[#34D399] border-2 border-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-[14.5px] font-semibold text-[#233B33] m-0" style={geo}>
-                          Barbaranne Hill-Irving
-                        </h4>
-                        <p className="text-[11.5px] text-[#71807A] m-0 mt-0.5 leading-snug" style={geo}>
-                          Licensed REALTOR® • Certified New Home Specialist
-                        </p>
-                        <span className="inline-flex items-center gap-1.5 text-[10.5px] text-[#B87E58] font-medium mt-1.5 bg-[#B87E58]/10 px-2 py-0.5 rounded-md">
-                          Private Discovery Call (1-on-1)
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Service Selection Section */}
+                {/* ─── Right Column (5 of 12 cols): Unified Editorial Sidebar (Sticky) ─── */}
+                <div className="lg:col-span-5 lg:sticky lg:top-24">
+                  <div 
+                    className="bg-[#FAF9F5] border border-[#ECE7DE] rounded-2xl p-7 sm:p-8 flex flex-col justify-between"
+                    style={{ minHeight: '520px' }}
+                  >
                     <div>
-                      <div className="flex items-center justify-between mb-2.5">
-                        <p className="text-[11px] uppercase tracking-[0.16em] text-[#8A9490] font-bold" style={geo}>
-                          Select Consultation Service
-                        </p>
-                        <span className="text-[10.5px] text-[#1F7A4C] font-semibold uppercase tracking-wider bg-[#E8F5EE] px-2.5 py-0.5 rounded-full" style={geo}>
-                          Complimentary
-                        </span>
-                      </div>
-
-                      {/* Luxury Custom Service Select */}
-                      <div className="relative mb-4">
-                        <select
-                          value={service.id}
-                          onChange={(e) => {
-                            const s = SERVICE_OPTIONS.find((o) => o.id === e.target.value);
-                            if (s) setService(s);
-                          }}
-                          className="w-full text-[13px] font-semibold text-[#233B33] px-4 py-3.5 cursor-pointer appearance-none bg-[#FAF9F5] hover:bg-white rounded-xl border border-[#E5E0D5] focus:outline-none focus:border-[#B87E58] focus:ring-2 focus:ring-[#B87E58]/15 transition-all shadow-xs"
-                          style={geo}
-                        >
-                          {SERVICE_OPTIONS.map((o) => (
-                            <option key={o.id} value={o.id}>
-                              {o.title} • {o.duration}
-                            </option>
-                          ))}
-                        </select>
-                        <ChevronDown className="w-4 h-4 text-[#8A9490] absolute right-4 top-4 pointer-events-none" />
-                      </div>
-
-                      {/* Service Description Box with clean inner padding */}
-                      <div
-                        className="p-5 rounded-2xl bg-[#FAF9F5] border border-[#ECE7DE]"
-                        style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.02)' }}
-                      >
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="text-[14px] font-semibold text-[#233B33]" style={geo}>
-                            {service.title}
+                      {/* Concierge Profile Header */}
+                      <div className="flex items-center gap-4 pb-6 border-b border-[#ECE7DE]">
+                        <div className="relative shrink-0">
+                          <img
+                            src="/berne.jpg"
+                            alt="Barbaranne Hill-Irving"
+                            className="w-14 h-14 rounded-full object-cover border border-[#D6A47E]"
+                            style={{ objectPosition: '50% 12%' }}
+                          />
+                          <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#34D399] border-2 border-[#FAF9F5]" />
+                        </div>
+                        <div>
+                          <h4 className="text-[15px] font-semibold text-[#233B33] m-0" style={geo}>
+                            Barbaranne Hill-Irving
                           </h4>
-                          <span className="text-[11.5px] font-semibold text-[#B87E58] px-2.5 py-0.5 rounded-md bg-[#B87E58]/10" style={geo}>
-                            {service.duration}
+                          <p className="text-[12px] text-[#71807A] m-0 mt-0.5 leading-snug font-light" style={geo}>
+                            Licensed REALTOR® • Certified New Home Specialist
+                          </p>
+                          <span className="inline-block text-[11px] text-[#B87E58] font-medium mt-1">
+                            Private 1-on-1 Consultation
                           </span>
                         </div>
-                        <p className="text-[12px] text-[#697A73] font-light leading-relaxed mb-3.5" style={geo}>
-                          {service.description}
-                        </p>
+                      </div>
 
-                        <button
-                          onClick={() => setDetails(!details)}
-                          className="flex items-center gap-1.5 text-[11.5px] text-[#B87E58] font-medium cursor-pointer hover:text-[#9E643E] transition-colors"
-                          style={geo}
-                        >
-                          <span>{details ? 'Hide details' : "What's included in this session?"}</span>
-                          {details ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                        </button>
+                      {/* Service Selection */}
+                      <div className="pt-6">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-[11px] uppercase tracking-[0.14em] text-[#8A9490] font-semibold" style={geo}>
+                            Consultation Type
+                          </span>
+                          <span className="text-[11px] text-[#1F7A4C] font-medium bg-[#E8F5EE] px-2.5 py-0.5 rounded-full" style={geo}>
+                            Complimentary
+                          </span>
+                        </div>
 
-                        {details && (
-                          <ul className="mt-3.5 pt-3.5 space-y-2 text-[11.5px] text-[#475751]" style={{ borderTop: '1px solid #E8E3DA', ...geo }}>
-                            {service.includes.map((item, i) => (
-                              <li key={i} className="flex items-start gap-2.5">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-[#B87E58] shrink-0 mt-0.5" />
-                                <span>{item}</span>
-                              </li>
+                        {/* Minimalist Select Dropdown */}
+                        <div className="relative mb-5">
+                          <select
+                            value={service.id}
+                            onChange={(e) => {
+                              const s = SERVICE_OPTIONS.find((o) => o.id === e.target.value);
+                              if (s) setService(s);
+                            }}
+                            className="w-full text-[13px] font-medium text-[#233B33] px-4 py-3.5 cursor-pointer appearance-none bg-white rounded-xl border border-[#ECE7DE] focus:outline-none focus:border-[#B87E58] transition-all shadow-2xs"
+                            style={geo}
+                          >
+                            {SERVICE_OPTIONS.map((o) => (
+                              <option key={o.id} value={o.id}>
+                                {o.title} • {o.duration}
+                              </option>
                             ))}
-                          </ul>
-                        )}
+                          </select>
+                          <ChevronDown className="w-4 h-4 text-[#8A9490] absolute right-4 top-4 pointer-events-none" />
+                        </div>
+
+                        {/* Service Description & Inclusions */}
+                        <div className="bg-white/80 rounded-xl p-4 border border-[#ECE7DE]">
+                          <p className="text-[12.5px] text-[#556660] font-light leading-relaxed m-0" style={geo}>
+                            {service.description}
+                          </p>
+
+                          <button
+                            type="button"
+                            onClick={() => setDetails(!details)}
+                            className="inline-flex items-center gap-1.5 text-[11.5px] text-[#B87E58] font-medium cursor-pointer mt-3 hover:text-[#9E643E] transition-colors"
+                            style={geo}
+                          >
+                            <span>{details ? 'Hide session agenda' : 'View session agenda'}</span>
+                            {details ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                          </button>
+
+                          {details && (
+                            <ul className="mt-3 pt-3 border-t border-[#ECE7DE] space-y-2 text-[11.5px] text-[#475751]" style={geo}>
+                              {service.includes.map((item, i) => (
+                                <li key={i} className="flex items-start gap-2">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B87E58] shrink-0 mt-0.5" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Confirmed Slot Preview Card & Action CTA */}
-                  <div className="pt-2 space-y-4">
-                    <div
-                      className="p-4 sm:p-5 rounded-2xl flex items-center justify-between text-white"
-                      style={{
-                        background: 'linear-gradient(135deg, #233B33 0%, #1A2D27 100%)',
-                        boxShadow: '0 6px 20px rgba(35, 59, 51, 0.18)',
-                      }}
-                    >
-                      <div className="space-y-1">
-                        <span className="text-[10px] uppercase tracking-[0.16em] text-[#B87E58] font-bold block" style={geo}>
-                          Confirmed Slot Preview
-                        </span>
-                        <p className="text-[13.5px] font-medium text-white m-0" style={geo}>
-                          {dayName(day)}, {MONTHS[month]} {day}, {year}
-                        </p>
+                    {/* Bottom Unified Reservation Preview & CTA */}
+                    <div className="pt-6 border-t border-[#ECE7DE] mt-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <span className="text-[10.5px] uppercase tracking-[0.14em] text-[#8A9490] block" style={geo}>
+                            Selected Appointment
+                          </span>
+                          <span className="text-[13px] font-semibold text-[#233B33] mt-0.5 block" style={geo}>
+                            {dayName(day).slice(0, 3)}, {MONTHS[month].slice(0, 3)} {day}, {year}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#B87E58] bg-white px-3 py-1.5 rounded-lg border border-[#ECE7DE]" style={geo}>
+                          <Clock className="w-3.5 h-3.5" />
+                          <span>{time}</span>
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#F3ECE4] bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/10 shadow-xs" style={geo}>
-                          <Clock className="w-3.5 h-3.5 text-[#B87E58]" />
-                          {time}
-                        </span>
+
+                      <button
+                        type="button"
+                        onClick={goStep2}
+                        className="w-full flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 py-3.5 px-5 rounded-xl text-[12px] font-semibold uppercase tracking-[0.14em] text-white"
+                        style={{
+                          background: '#B87E58',
+                          ...geo,
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#9F643E';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = '#B87E58';
+                        }}
+                      >
+                        <span>Proceed to Contact Details</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+
+                      <div className="flex items-center justify-center gap-1.5 text-[11px] text-[#8A9490] mt-3" style={geo}>
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#1F7A4C]" />
+                        <span>100% Complimentary • No credit card required</span>
                       </div>
                     </div>
 
-                    {/* Proceed CTA Button */}
-                    <button
-                      onClick={goStep2}
-                      className="w-full flex items-center justify-center gap-2.5 cursor-pointer transition-all duration-300 group py-4 px-5 rounded-2xl text-[12.5px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg"
-                      style={{
-                        background: 'linear-gradient(135deg, #B87E58 0%, #9F643E 100%)',
-                        boxShadow: '0 8px 24px rgba(184, 126, 88, 0.35)',
-                        ...geo,
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(184, 126, 88, 0.48)';
-                        e.currentTarget.style.transform = 'translateY(-1px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(184, 126, 88, 0.35)';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                      }}
-                    >
-                      <span>Proceed to Contact Details</span>
-                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </button>
-
-                    <div className="flex items-center justify-center gap-2 text-[11px] text-[#8A9490] pt-1" style={geo}>
-                      <ShieldCheck className="w-4 h-4 text-[#1F7A4C]" />
-                      <span>100% Free Consultation • No credit card required</span>
-                    </div>
                   </div>
                 </div>
+
               </div>
             </div>
           )}
