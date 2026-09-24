@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
+  { name: 'Schedule', path: '/booking' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -26,10 +27,9 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center Column: Navigation Items with increased mid gap (+20px) */}
+        {/* Center Column: Navigation Items */}
         <div
-          className="flex items-center justify-center gap-20 md:gap-24"
-          style={{ gap: '96px' }}
+          className="flex items-center justify-center gap-10 md:gap-14 lg:gap-16"
         >
           {NAV_ITEMS.map((item) => {
             const isActive = location.pathname === item.path;

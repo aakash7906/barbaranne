@@ -38,3 +38,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+input::placeholder,
+textarea::placeholder {
+  color: #9EA8A4 !important;
+  opacity: 1 !important;
+}

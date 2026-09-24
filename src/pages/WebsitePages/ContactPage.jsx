@@ -57,7 +57,7 @@ export default function ContactPage() {
           }}
         >
           {/* ── Two-Column Grid: Info Left | Form Right ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 lg:gap-24">
 
             {/* ── LEFT: Information ── */}
             <div className="w-full">
@@ -71,8 +71,8 @@ export default function ContactPage() {
               <div className="w-full flex flex-col">
                 {/* Name */}
                 <div
-                  className="w-full flex flex-row justify-between items-start py-9"
-                  style={{ borderBottom: '1px solid #E5E7EB' }}
+                  className="w-full flex flex-row justify-between items-start"
+                  style={{ borderBottom: '1px solid #E5E7EB', paddingTop: '20px', paddingBottom: '20px' }}
                 >
                   <span className="text-[14.5px] font-light text-[#3F524A]" style={{ fontFamily }}>
                     Name
@@ -84,8 +84,8 @@ export default function ContactPage() {
 
                 {/* Address */}
                 <div
-                  className="w-full flex flex-row justify-between items-start py-9"
-                  style={{ borderBottom: '1px solid #E5E7EB' }}
+                  className="w-full flex flex-row justify-between items-start"
+                  style={{ borderBottom: '1px solid #E5E7EB', paddingTop: '20px', paddingBottom: '20px' }}
                 >
                   <span className="text-[14.5px] font-light text-[#3F524A] shrink-0" style={{ fontFamily }}>
                     Address
@@ -99,8 +99,8 @@ export default function ContactPage() {
 
                 {/* Cell */}
                 <div
-                  className="w-full flex flex-row justify-between items-center py-9"
-                  style={{ borderBottom: '1px solid #E5E7EB' }}
+                  className="w-full flex flex-row justify-between items-center"
+                  style={{ borderBottom: '1px solid #E5E7EB', paddingTop: '20px', paddingBottom: '20px' }}
                 >
                   <span className="text-[14.5px] font-light text-[#3F524A]" style={{ fontFamily }}>
                     Cell
@@ -112,8 +112,8 @@ export default function ContactPage() {
 
                 {/* Work Phone */}
                 <div
-                  className="w-full flex flex-row justify-between items-center py-9"
-                  style={{ borderBottom: '1px solid #E5E7EB' }}
+                  className="w-full flex flex-row justify-between items-center"
+                  style={{ borderBottom: '1px solid #E5E7EB', paddingTop: '20px', paddingBottom: '20px' }}
                 >
                   <span className="text-[14.5px] font-light text-[#3F524A]" style={{ fontFamily }}>
                     Work Phone
@@ -124,9 +124,9 @@ export default function ContactPage() {
                 </div>
 
                 {/* Direct Line */}
-                <div
-                  className="w-full flex flex-row justify-between items-center py-9"
-                  style={{ borderBottom: '1px solid #E5E7EB' }}
+                {/* <div
+                  className="w-full flex flex-row justify-between items-center"
+                  style={{ borderBottom: '1px solid #E5E7EB', paddingTop: '20px', paddingBottom: '20px' }}
                 >
                   <span className="text-[14.5px] font-light text-[#3F524A]" style={{ fontFamily }}>
                     Direct Line
@@ -134,26 +134,26 @@ export default function ContactPage() {
                   <a href="tel:513-319-0581" className="text-[14.5px] font-normal text-[#233B33] hover:text-[#B87E58] transition-colors" style={{ fontFamily }}>
                     513-319-0581
                   </a>
-                </div>
+                </div> */}
 
                 {/* Designation */}
                 <div
-                  className="w-full flex flex-col py-9"
-                  style={{ borderBottom: '1px solid #E5E7EB' }}
+                  className="w-full flex flex-row justify-between items-start"
+                  style={{ borderBottom: '1px solid #E5E7EB', paddingTop: '20px', paddingBottom: '20px' }}
                 >
-                  <span className="text-[14.5px] font-light text-[#3F524A]" style={{ fontFamily, marginBottom: '8px' }}>
+                  <span className="text-[14.5px] font-light text-[#3F524A] shrink-0" style={{ fontFamily }}>
                     Designation
                   </span>
-                  <span className="text-[15px] font-normal text-[#233B33] leading-[1.9]" style={{ fontFamily }}>
+                  <span className="text-[14.5px] font-normal text-[#233B33] text-right leading-relaxed" style={{ fontFamily }}>
                     CNHS - Certified New Home Specialist,<br />
-                    REALTOR®®
+                    REALTOR®
                   </span>
                 </div>
 
                 {/* Languages */}
                 <div
-                  className="w-full flex flex-row justify-between items-center py-9"
-                  style={{ borderBottom: '1px solid #E5E7EB' }}
+                  className="w-full flex flex-row justify-between items-center"
+                  style={{ borderBottom: '1px solid #E5E7EB', paddingTop: '20px', paddingBottom: '20px' }}
                 >
                   <span className="text-[14.5px] font-light text-[#3F524A]" style={{ fontFamily }}>
                     Languages
@@ -164,7 +164,10 @@ export default function ContactPage() {
                 </div>
 
                 {/* E-mail Me */}
-                <div className="w-full py-9">
+                <div 
+                  className="w-full"
+                  style={{ paddingTop: '20px', paddingBottom: '20px' }}
+                >
                   <a
                     href="mailto:barbaranne@bfrealtygroup.com"
                     className="text-[14.5px] font-light text-[#B87E58] hover:text-[#233B33] transition-colors"
@@ -200,12 +203,12 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="w-full flex flex-col">
                 <div
                   className="grid grid-cols-1 gap-7 sm:grid-cols-2 text-left"
-                  style={{ marginBottom: '36px' }}
+                  style={{ marginBottom: '44px' }}
                 >
                   <div>
                     <label
                       htmlFor="contactFirstName"
-                      className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
+                      className="mb-2.5 block text-[13px] font-light tracking-[0.04em] text-[#3F524A]"
                       style={{ fontFamily }}
                     >
                       First Name *
@@ -217,14 +220,14 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, firstName: e.target.value })
                       }
-                      className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-2 text-xs text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none"
+                      className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-3 text-[14.5px] text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none"
                       style={{ fontFamily }}
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="contactLastName"
-                      className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
+                      className="mb-2.5 block text-[13px] font-light tracking-[0.04em] text-[#3F524A]"
                       style={{ fontFamily }}
                     >
                       Last Name *
@@ -236,16 +239,16 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, lastName: e.target.value })
                       }
-                      className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-2 text-xs text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none"
+                      className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-3 text-[14.5px] text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none"
                       style={{ fontFamily }}
                     />
                   </div>
                 </div>
 
-                <div className="text-left" style={{ marginBottom: '36px' }}>
+                <div className="text-left" style={{ marginBottom: '44px' }}>
                   <label
                     htmlFor="contactEmail"
-                    className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
+                    className="mb-2.5 block text-[13px] font-light tracking-[0.04em] text-[#3F524A]"
                     style={{ fontFamily }}
                   >
                     Email *
@@ -258,15 +261,15 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-2 text-xs text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none"
+                    className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-3 text-[14.5px] text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none"
                     style={{ fontFamily }}
                   />
                 </div>
 
-                <div className="text-left" style={{ marginBottom: '44px' }}>
+                <div className="text-left" style={{ marginBottom: '52px' }}>
                   <label
                     htmlFor="contactMessage"
-                    className="mb-2 block text-[11.5px] font-light tracking-[0.04em] text-[#3F524A]"
+                    className="mb-2.5 block text-[13px] font-light tracking-[0.04em] text-[#3F524A]"
                     style={{ fontFamily }}
                   >
                     Message
@@ -278,7 +281,7 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-2 text-xs text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none resize-none min-h-[100px]"
+                    className="rounded-none border-0 border-b border-[#233B33] bg-transparent px-0 py-3 text-[14.5px] text-[#233B33] focus-visible:border-[#B87E58] focus-visible:outline-none focus:ring-0 shadow-none resize-none min-h-[110px]"
                     style={{ fontFamily }}
                   />
                 </div>
