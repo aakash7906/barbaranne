@@ -2,11 +2,7 @@ import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "../../lib/utils";
 
-/**
- * Luxury Shadcn-styled Calendar Component
- * Matches shadcn/ui calendar aesthetics, typography and states
- * with custom warm luxury palette (#233B33, #B87E58, #FAF9F5, #ECE7DE)
- */
+
 export function Calendar({
   selectedDate,
   onSelectDate,
@@ -59,7 +55,7 @@ export function Calendar({
 
   return (
     <div className={cn("w-full bg-[#FAF9F5]/70 rounded-2xl border border-[#ECE7DE] p-5 sm:p-7", className)}>
-      {/* Month Header / Navigation (shadcn style) - shifted inside away from corners */}
+  
       <div 
         className="flex items-center justify-between px-2"
         style={{ paddingTop: '10px', paddingBottom: '24px' }}
@@ -90,7 +86,6 @@ export function Calendar({
         </div>
       </div>
 
-      {/* Weekday labels - mathematically synchronized with calendar day cells */}
       <div className="grid grid-cols-7 py-3.5 px-2 border-b border-[#ECE7DE]">
         {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d, index) => {
           const isWeekend = index === 0 || index === 6;
@@ -109,7 +104,7 @@ export function Calendar({
         })}
       </div>
 
-      {/* Calendar Grid Days - exactly matches the weekday column centers */}
+
       <div className="space-y-3 pt-5 pb-3 px-2">
         {weeks.map((wk, wi) => (
           <div key={wi} className="grid grid-cols-7 items-center">
@@ -151,7 +146,7 @@ export function Calendar({
         ))}
       </div>
 
-      {/* Footer Info / Legend - shifted inside away from corners */}
+     
       <div 
         className="flex items-center justify-between px-2 border-t border-[#ECE7DE] text-[12px] text-[#7E8C86]"
         style={{ paddingTop: '24px', paddingBottom: '16px', marginTop: '20px' }}

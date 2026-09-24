@@ -639,10 +639,10 @@ export default function BookingPage() {
 
           {/* ═════ STEP 2 ═════════════════════════════════════════════════════ */}
           {step === 2 && (
-            <div className="w-full">
+            <div className="w-full flex flex-col items-center">
               {/* Booking summary bar with generous breathing room */}
               <div
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-6"
+                className="w-full max-w-[820px] flex flex-col sm:flex-row sm:items-center justify-between gap-6"
                 style={{
                   padding: '24px 30px',
                   borderRadius: '16px',
@@ -906,9 +906,9 @@ export default function BookingPage() {
 
           {/* ═════ STEP 3 ═════════════════════════════════════════════════════ */}
           {step === 3 && (
-            <div className="w-full max-w-[820px] mx-auto">
+            <div className="w-full flex flex-col items-center">
               <div
-                className="bg-[#FAF9F5] border border-[#ECE7DE] rounded-2xl text-center"
+                className="w-full max-w-[820px] bg-[#FAF9F5] border border-[#ECE7DE] rounded-2xl text-center"
                 style={{ padding: '48px 36px 52px' }}
               >
                 {/* Success Icon */}
