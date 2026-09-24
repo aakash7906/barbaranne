@@ -251,8 +251,8 @@ export default function BookingPage() {
       {/*  SECTION 1 — Luxury Cream Editorial Banner                            */}
 
       <section
-        className="w-full bg-[#FAF9F5] flex flex-col items-center justify-center relative border-b border-[#ECE7DE]"
-        style={{ paddingTop: '56px', paddingBottom: '72px', minHeight: '250px' }}
+        className="w-full bg-[#FAF9F5] flex flex-col items-center justify-center relative border-b border-[#ECE7DE] px-4"
+        style={{ paddingTop: 'clamp(32px, 6vw, 56px)', paddingBottom: 'clamp(40px, 7vw, 72px)', minHeight: '250px' }}
       >
         {/* Subtle decorative background aura */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex justify-center items-center opacity-40">
@@ -277,7 +277,7 @@ export default function BookingPage() {
 
         {/* Step indicator pills — shifted visibly down towards banner bottom */}
         <div
-          className="flex items-center gap-2.5 relative z-10"
+          className="flex items-center gap-1.5 sm:gap-2.5 relative z-10 flex-wrap justify-center"
           style={{ ...geo, marginTop: '54px' }}
         >
           {[
@@ -288,21 +288,21 @@ export default function BookingPage() {
             <React.Fragment key={item.label}>
               {i > 0 && (
                 <div
-                  className="w-6 sm:w-10 h-[2px] transition-all duration-500 rounded-full"
+                  className="w-4 sm:w-6 md:w-10 h-[2px] transition-all duration-500 rounded-full"
                   style={{ backgroundColor: step > i ? '#B87E58' : '#E2DDD2' }}
                 />
               )}
               <div
-                className="flex items-center gap-2.5 text-[13px] sm:text-[14px] tracking-[0.12em] uppercase font-medium transition-all duration-300 select-none shadow-sm"
+                className="flex items-center gap-1.5 sm:gap-2.5 text-[11px] sm:text-[13px] md:text-[14px] tracking-[0.10em] sm:tracking-[0.12em] uppercase font-medium transition-all duration-300 select-none shadow-sm"
                 style={{
-                  padding: '10px 22px',
+                  padding: 'clamp(7px, 1.5vw, 10px) clamp(12px, 2.5vw, 22px)',
                   backgroundColor: step === i + 1 ? '#233B33' : step > i + 1 ? '#B87E58' : '#FFFFFF',
                   color: step >= i + 1 ? '#FFFFFF' : '#8A9490',
                   borderRadius: '30px',
                   border: step === i + 1 ? '1px solid #233B33' : step > i + 1 ? '1px solid #B87E58' : '1px solid #E5E0D5',
                 }}
               >
-                <span className="opacity-80 font-semibold text-[12px] sm:text-[13px]">{item.num}</span>
+                <span className="opacity-80 font-semibold text-[11px] sm:text-[12px] md:text-[13px]">{item.num}</span>
                 <span>{item.label}</span>
               </div>
             </React.Fragment>
@@ -314,7 +314,7 @@ export default function BookingPage() {
       {/*  SECTION 2 — Direct Editorial Layout (Spacious & Clean)              */}
       <section
         className="w-full flex justify-center bg-white z-10"
-        style={{ paddingTop: '80px', paddingBottom: '140px' }}
+        style={{ paddingTop: 'clamp(40px, 8vw, 80px)', paddingBottom: 'clamp(60px, 12vw, 140px)' }}
       >
         <div className="w-full max-w-[1240px] px-6 sm:px-8 md:px-12">
 
@@ -474,13 +474,13 @@ export default function BookingPage() {
 
                   {/* Main Editorial Card Container matching Left Calendar's background & border */}
                   <div
-                    className="bg-[#FAF9F5] border border-[#ECE7DE] rounded-2xl px-6 sm:px-7 flex flex-col justify-between"
+                    className="bg-[#FAF9F5] border border-[#ECE7DE] rounded-2xl px-4 sm:px-6 lg:px-7 flex flex-col justify-between"
                     style={{ minHeight: '600px', boxSizing: 'border-box', paddingTop: '16px', paddingBottom: '28px' }}
                   >
                     {/* Inner content wrapper keeping 20px margin away from card borders */}
                     <div
                       className="flex flex-col justify-between h-full flex-1"
-                      style={{ marginLeft: '20px', marginRight: '20px' }}
+                      style={{ marginLeft: 'clamp(0px, 2vw, 20px)', marginRight: 'clamp(0px, 2vw, 20px)' }}
                     >
                       <div className="flex flex-col space-y-6">
                         {/* 1. Concierge Profile Header - Expanded luxury height */}
@@ -644,7 +644,7 @@ export default function BookingPage() {
               <div
                 className="w-full max-w-[820px] flex flex-col sm:flex-row sm:items-center justify-between gap-6"
                 style={{
-                  padding: '24px 30px',
+                  padding: 'clamp(16px, 3vw, 24px) clamp(16px, 4vw, 30px)',
                   borderRadius: '16px',
                   backgroundColor: '#FAF9F5',
                   border: '1px solid #ECE7DE',
@@ -675,7 +675,7 @@ export default function BookingPage() {
 
               {/* Form Card Container matching Step 1 Calendar Card */}
               <div className="w-full max-w-[820px] mx-auto bg-[#FAF9F5] border border-[#ECE7DE] rounded-2xl"
-                style={{ padding: '40px 36px 48px' }}
+                style={{ padding: 'clamp(20px, 4vw, 40px) clamp(16px, 4vw, 36px) clamp(24px, 5vw, 48px)' }}
               >
                 <div
                   className="flex items-baseline justify-between border-b border-[#ECE7DE]"
@@ -867,13 +867,13 @@ export default function BookingPage() {
 
                   {/* Row 5: Action Buttons */}
                   <div
-                    className="flex items-center justify-between gap-6 border-t border-[#ECE7DE]"
+                    className="flex flex-col xs:flex-row items-stretch xs:items-center justify-between gap-3 sm:gap-6 border-t border-[#ECE7DE]"
                     style={{ paddingTop: '28px', marginTop: '4px' }}
                   >
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="min-w-[140px] sm:min-w-[160px] flex items-center justify-center gap-2 cursor-pointer transition-colors px-6 rounded-xl border border-[#ECE7DE] bg-white text-[#233B33] hover:bg-[#FAF9F5] text-[12.5px] font-semibold uppercase tracking-[0.14em] shadow-2xs"
+                      className="w-full xs:w-auto xs:min-w-[140px] sm:min-w-[160px] flex items-center justify-center gap-2 cursor-pointer transition-colors px-6 rounded-xl border border-[#ECE7DE] bg-white text-[#233B33] hover:bg-[#FAF9F5] text-[12.5px] font-semibold uppercase tracking-[0.14em] shadow-2xs"
                       style={{
                         ...geo,
                         height: '52px',
@@ -886,7 +886,7 @@ export default function BookingPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="max-w-[420px] w-full flex items-center justify-center gap-2.5 cursor-pointer transition-all duration-300 px-8 rounded-xl text-[12.5px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm disabled:opacity-75 disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-center gap-2.5 cursor-pointer transition-all duration-300 px-8 rounded-xl text-[12.5px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm disabled:opacity-75 disabled:cursor-not-allowed"
                       style={{
                         background: '#B87E58',
                         height: '52px',
@@ -909,7 +909,7 @@ export default function BookingPage() {
             <div className="w-full flex flex-col items-center">
               <div
                 className="w-full max-w-[820px] bg-[#FAF9F5] border border-[#ECE7DE] rounded-2xl text-center"
-                style={{ padding: '48px 36px 52px' }}
+                style={{ padding: 'clamp(24px, 5vw, 48px) clamp(16px, 4vw, 36px) clamp(28px, 5vw, 52px)' }}
               >
                 {/* Success Icon */}
                 <div
@@ -932,7 +932,7 @@ export default function BookingPage() {
                 {/* Booking Summary Box with Step 2 matching paddings and borders */}
                 <div
                   className="text-left bg-white rounded-xl border border-[#ECE7DE] shadow-2xs mx-auto"
-                  style={{ padding: '28px 32px', marginBottom: '36px' }}
+                  style={{ padding: 'clamp(16px, 3vw, 28px) clamp(16px, 3.5vw, 32px)', marginBottom: '36px' }}
                 >
                   <div
                     className="flex items-center justify-between border-b border-[#ECE7DE]"

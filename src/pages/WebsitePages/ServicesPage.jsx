@@ -56,10 +56,10 @@ export default function ServicesPage() {
     <div className="w-full bg-white flex flex-col items-center">
       {/* ── Top Cream Header Banner ── */}
       <section
-        className="w-full bg-[#F7F6F0] flex flex-col items-center justify-center"
+        className="w-full bg-[#F7F6F0] flex flex-col items-center justify-center px-4"
         style={{
-          paddingTop: '70px',
-          paddingBottom: '70px',
+          paddingTop: 'clamp(40px, 7vw, 70px)',
+          paddingBottom: 'clamp(40px, 7vw, 70px)',
           minHeight: '240px',
         }}
       >
@@ -72,14 +72,14 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Main White Content Card Overlapping the Banner ── */}
-      <section className="w-full max-w-[880px] px-4 sm:px-6 -mt-[88px] z-10 mb-20 sm:mb-28">
+      <section className="w-full max-w-[880px] px-4 sm:px-6 -mt-[60px] sm:-mt-[88px] z-10 mb-20 sm:mb-28">
         <div
           className="bg-white w-full flex flex-col items-center shadow-none"
           style={{
-            paddingTop: '55px',
-            paddingBottom: '70px',
-            paddingLeft: '32px',
-            paddingRight: '32px',
+            paddingTop: 'clamp(32px, 5vw, 55px)',
+            paddingBottom: 'clamp(40px, 7vw, 70px)',
+            paddingLeft: 'clamp(16px, 4vw, 32px)',
+            paddingRight: 'clamp(16px, 4vw, 32px)',
           }}
         >
           {/* Services List */}
